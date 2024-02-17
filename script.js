@@ -12,50 +12,44 @@ async function loadProductData() {
 
 // Refactor the Quagga.init logic into a reusable function for starting the scanner
 function startScanner() {
-    Qfunction startScanner() {
     Quagga.init({
         inputStream: {
             name: "Live",
             type: "LiveStream",
             target: document.querySelector('#scanner-container'),
             constraints: {
-                width: {min: 640},
+                width: {min: 640}, // Specify minimum resolution for the scanner
                 height: {min: 480},
-                facingMode: "environment",
-                aspectRatio: {min: 1, max: 2}
-            }
+                facingMode: "environment" // Use the rear camera
+            },
+            area: { // Defines the area of the image to scan
+                top: "0%",    // Start scanning from the top of the viewport
+                right: "0%",  // to the right edge
+                left: "0%",   // from the left edge
+                bottom: "0%"  // to the bottom edge
+            },
+            singleChannel: false // Color images are processed
         },
-        locator: {
-            patchSize: "medium",
-            halfSample: true
-        },
-        numOfWorkers: navigator.hardwareConcurrency,
-        frequency: 10,
         decoder: {
-            readers: ["ean_reader"], // Explicitly specify only EAN-13 reader
+            readers: ["ean_reader"], // Specify that you only want to scan EAN-13 barcodes
         },
-        locate: true
+        locate: true // Helps in visualizing the location of the detected barcodes
     }, function(err) {
         if (err) {
             console.error('Failed to initialize Quagga:', err);
             return;
         }
+        console.log("Quagga initialization successful.");
         Quagga.start();
     });
-}
 
     Quagga.onDetected(function(data) {
         Quagga.stop();
         const barcode = data.codeResult.code;
-        const productInfo = getProductInfo(barcode);
-        if (productInfo) {
-            showPopup(productInfo);
-        } else {
-            alert("No product found!");
-        }
+        showPopup(getProductInfo(barcode));
     });
 }
-
+    
 function getProductInfo(barcode) {
     // Search for product information by barcode in the loaded JSON data
     const product = productData.find(product => product.Code.toString() === barcode);
