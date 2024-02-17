@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barcode Scanner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Barcode Scanner</h1>
+  </header>
+  <main>
+    <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search by code or name..." autocomplete="off">
+    <div id="searchResults" class="search-results"></div>
+</div>
+
+    <div id="scanner-container"></div>
+    <button id="scanBtn">Scan Barcode</button>
+    <div id="product-info" class="popup" style="display: none;">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2 id="product-title"></h2>
+        <img id="product-image" src="" alt="Product Image">
+        <p id="product-description"></p>
+        <p id="product-price"></p>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/quagga"></script>
+  <script src="script.js"></script>
+</body>
+</html>
