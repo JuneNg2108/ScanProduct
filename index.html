@@ -10,39 +10,39 @@
   <header>
     <h1>Barcode Scanner</h1>
   </header>
-  
-  <!-- Modal for Choosing Customer Type -->
-  <div id="customerTypeModal" class="modal">
-    <div class="modal-content">
-      <h2>Bạn là khách hàng nào?</h2>
-      <button id="retailCustomerBtn">Khách Lẻ</button>
-      <button id="wholesaleCustomerBtn">Khách Buôn</button>
-    </div>
-  </div>
 
   <main>
-    <!-- Search Container -->
     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search by code or name..." autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </div>
+    <input type="text" id="searchInput" placeholder="Search by code or name..." autocomplete="off">
+    <div id="searchResults" class="search-results"></div>
+</div>
+      <!-- Product Display Area -->
+<div id="product-display-area" class="product-display-area" style="display: none;"></div>
 
-    <!-- Scanner Container -->
+<!-- Category Filters (example) -->
+<div id="category-filters" class="category-filters" style="display: none;">
+    <button onclick="filterProducts('All')">All</button>
+    <button onclick="filterProducts('Electronics')">Electronics</button>
+    <button onclick="filterProducts('Books')">Books</button>
+    <!-- Add more categories as needed -->
+</div>
+
+<!-- Loading Indicator -->
+<div id="loading-indicator" class="loading-indicator" style="display: none;">Loading...</div>
+
+
     <div id="scanner-container"></div>
     <button id="scanBtn">Scan Barcode</button>
-
-    <!-- Popup for Product Info -->
-    <div id="product-info" class="popup">
+    <div id="product-info" class="popup" style="display: none;">
       <div class="popup-content">
         <span class="close" onclick="closePopup()">&times;</span>
         <h2 id="product-title"></h2>
         <img id="product-image" src="" alt="Product Image">
-        <p id="product-description">Description will appear here...</p>
-        <p id="product-price">Price will be shown here...</p>
+        <p id="product-description"></p>
+        <p id="product-price"></p>
       </div>
     </div>
   </main>
-
   <script src="https://cdn.jsdelivr.net/npm/quagga"></script>
   <script src="script.js"></script>
 </body>
