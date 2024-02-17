@@ -13,14 +13,19 @@ async function loadProductData() {
 // Refactor the Quagga.init logic into a reusable function for starting the scanner
 function startScanner() {
     Quagga.init({
-        inputStream: {
-            name: "Live",
-            type: "LiveStream",
-            target: document.querySelector('#scanner-container')
-        },
-        decoder: {
-            readers: ["ean_reader"]
+    inputStream: {
+        name: "Live",
+        type: "LiveStream",
+        target: document.querySelector('#scanner-container'),
+        constraints: {
+            width: 1280,
+            height: 720,
+            facingMode: "environment"
         }
+    },
+    decoder: {
+        readers: ["ean_reader"]
+    }
     }, function(err) {
         if (err) {
             console.error('Failed to initialize Quagga:', err);
