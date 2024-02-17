@@ -1,23 +1,24 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  color: #333;
 }
 
 header {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #007bff 0%, #00486b 100%);
   color: #ffffff;
   text-align: center;
   padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 main {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
 button {
@@ -25,26 +26,26 @@ button {
   color: #ffffff;
   border: none;
   border-radius: 5px;
-  margin: 20px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background-color: #0056b3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 #scanner-container {
   width: 100%;
   max-width: 600px;
-  margin: auto;
-  aspect-ratio: 1 / 1;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  overflow: hidden;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .popup {
@@ -53,17 +54,16 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  padding: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  padding: 25px;
   width: 80%;
-  max-width: 500px;
+  max-width: 450px;
   z-index: 1000;
-  border-radius: 15px;
-  font-size: 18px;
+  border-radius: 12px;
 }
 
-.popup-content {
-  text-align: center;
+.popup-content h2, .popup-content p {
+  margin: 15px 0;
 }
 
 .close {
@@ -72,21 +72,33 @@ button:hover {
   right: 15px;
   font-size: 24px;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.close:hover {
+  transform: rotate(90deg);
 }
 
 .search-container {
   width: 100%;
   max-width: 600px;
-  position: relative;
   margin: 20px auto;
 }
 
 #searchInput {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 10px 15px;
+  border: 2px solid #007bff;
+  border-radius: 20px;
   font-size: 16px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .search-results {
@@ -100,7 +112,9 @@ button:hover {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  display: none; /* Initially hidden */
 }
 
 .search-results div {
