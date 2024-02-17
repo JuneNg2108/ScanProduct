@@ -27,7 +27,7 @@ button, .category-filters button {
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-  font-size: 14px;
+  font-size: 20px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
@@ -112,7 +112,7 @@ button:hover, .category-filters button:hover {
 
   button, .category-filters button {
     padding: 8px 12px;
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .popup-content h2, .popup-content p, .close {
