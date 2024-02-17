@@ -78,6 +78,40 @@ function closePopup() {
     startScanner();
 }
 
+// Function to display product details in a structured layout
+function displayProductDetails(productInfo) {
+    const productDisplayArea = document.getElementById('product-display-area');
+    productDisplayArea.innerHTML = `
+        <div class="product-detail">
+            <img src="${productInfo.image}" alt="${productInfo.title}">
+            <div class="product-info">
+                <h3>${productInfo.title}</h3>
+                <p>${productInfo.description}</p>
+                <p class="product-price">${productInfo.price}</p>
+            </div>
+        </div>
+    `;
+    productDisplayArea.style.display = 'block';
+}
+
+// Function to toggle category filters
+function toggleCategoryFilters() {
+    const filterArea = document.getElementById('category-filters');
+    filterArea.style.display = filterArea.style.display === 'none' ? 'block' : 'none';
+}
+
+// Function for interactive tutorial (simplified example)
+function showTutorial() {
+    alert("Point your camera at a product barcode to scan. Use the search bar to find products by name or code.");
+}
+
+// Function for showing a loading state
+function showLoading(isLoading) {
+    const loadingIndicator = document.getElementById('loading-indicator');
+    loadingIndicator.style.display = isLoading ? 'block' : 'none';
+}
+
+
 // Setup the search functionality
 function setupSearch() {
     const searchInput = document.getElementById('searchInput');
