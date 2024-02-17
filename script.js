@@ -46,9 +46,15 @@ function startScanner() {
     Quagga.onDetected(function(data) {
         Quagga.stop();
         const barcode = data.codeResult.code;
-        showPopup(getProductInfo(barcode));
+        const productInfo = getProductInfo(barcode);
+        if (productInfo) {
+            showPopup(productInfo);
+        } else {
+            alert("No product found!");
+        }
     });
 }
+
     
 function getProductInfo(barcode) {
     // Search for product information by barcode in the loaded JSON data
