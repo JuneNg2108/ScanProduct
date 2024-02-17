@@ -12,20 +12,29 @@ async function loadProductData() {
 
 // Refactor the Quagga.init logic into a reusable function for starting the scanner
 function startScanner() {
+    Qfunction startScanner() {
     Quagga.init({
-    inputStream: {
-        name: "Live",
-        type: "LiveStream",
-        target: document.querySelector('#scanner-container'),
-        constraints: {
-            width: 1280,
-            height: 720,
-            facingMode: "environment"
-        }
-    },
-    decoder: {
-        readers: ["ean_reader"]
-    }
+        inputStream: {
+            name: "Live",
+            type: "LiveStream",
+            target: document.querySelector('#scanner-container'),
+            constraints: {
+                width: {min: 640},
+                height: {min: 480},
+                facingMode: "environment",
+                aspectRatio: {min: 1, max: 2}
+            }
+        },
+        locator: {
+            patchSize: "medium",
+            halfSample: true
+        },
+        numOfWorkers: navigator.hardwareConcurrency,
+        frequency: 10,
+        decoder: {
+            readers: ["ean_reader"], // Explicitly specify only EAN-13 reader
+        },
+        locate: true
     }, function(err) {
         if (err) {
             console.error('Failed to initialize Quagga:', err);
@@ -33,6 +42,7 @@ function startScanner() {
         }
         Quagga.start();
     });
+}
 
     Quagga.onDetected(function(data) {
         Quagga.stop();
