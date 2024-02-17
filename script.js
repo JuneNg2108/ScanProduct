@@ -16,30 +16,16 @@ function startScanner() {
         inputStream: {
             name: "Live",
             type: "LiveStream",
-            target: document.querySelector('#scanner-container'),
-            constraints: {
-                width: {min: 640}, // Specify minimum resolution for the scanner
-                height: {min: 480},
-                facingMode: "environment" // Use the rear camera
-            },
-            area: { // Defines the area of the image to scan
-                top: "0%",    // Start scanning from the top of the viewport
-                right: "0%",  // to the right edge
-                left: "0%",   // from the left edge
-                bottom: "0%"  // to the bottom edge
-            },
-            singleChannel: false // Color images are processed
+            target: document.querySelector('#scanner-container')
         },
         decoder: {
-            readers: ["ean_reader"], // Specify that you only want to scan EAN-13 barcodes
-        },
-        locate: true // Helps in visualizing the location of the detected barcodes
+            readers: ["ean_reader"]
+        }
     }, function(err) {
         if (err) {
             console.error('Failed to initialize Quagga:', err);
             return;
         }
-        console.log("Quagga initialization successful.");
         Quagga.start();
     });
 
@@ -55,7 +41,6 @@ function startScanner() {
     });
 }
 
-    
 function getProductInfo(barcode) {
     // Search for product information by barcode in the loaded JSON data
     const product = productData.find(product => product.Code.toString() === barcode);
