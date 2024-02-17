@@ -38,13 +38,13 @@ button:hover {
 
 #scanner-container {
   width: 100%;
-  max-width: 600px; /* Adjust based on your preference */
+  max-width: 600px;
   margin: auto;
-  aspect-ratio: 1 / 1; /* Keeps the container square */
+  aspect-ratio: 1 / 1;
   position: relative;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   border-radius: 10px;
-  overflow: hidden; /* Ensures nothing overflows the rounded corners */
+  overflow: hidden;
 }
 
 .popup {
@@ -55,10 +55,11 @@ button:hover {
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   padding: 20px;
-  width: 90%;
-  max-width: 400px;
+  width: 80%;
+  max-width: 500px;
   z-index: 1000;
-  border-radius: 10px;
+  border-radius: 15px;
+  font-size: 18px;
 }
 
 .popup-content {
@@ -100,7 +101,6 @@ button:hover {
   border-bottom-right-radius: 5px;
   background-color: #fff;
   overflow: hidden;
-  display: none; /* Initially hidden */
 }
 
 .search-results div {
@@ -110,9 +110,8 @@ button:hover {
 }
 
 .search-results div:hover {
-  background-color: #f0f0f0;
+  background-color: #e9ecef;
 }
-
 
 @media screen and (max-width: 768px) {
   #scanner-container {
