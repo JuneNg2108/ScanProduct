@@ -356,7 +356,13 @@ input[type="text"]:focus {
     padding: 8px; /* Reduce padding for smaller screens */
     font-size: 14px; /* Reduce font size for smaller screens */
   }
-  
+  .popup-content .close {
+    position: absolute;
+    top: 30px;
+    right: 80px;
+    cursor: pointer;
+    font-size: 30px;
+}
   .payment-input, .payment-button {
     width: auto; /* Allow the input and button to fill the available space */
     margin: 5px 0; /* Add vertical margin and remove horizontal margin */
@@ -365,14 +371,7 @@ input[type="text"]:focus {
   .change-info, #total, .popup-content h2 {
     font-size: 16px; /* Adjust font size for readability on small screens */
   }
-  
-  /* Adjust close button size and position */
-  .close {
-    font-size: 20px;
-    top: 5px;
-    right: 5px;
-  }
-  
+
   /* Ensure the input fields in the checkout items do not overflow */
   #checkout-items input[type="text"] {
     width: 40px; /* Adjust width as needed */
