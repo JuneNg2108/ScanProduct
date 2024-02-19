@@ -1,0 +1,239 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(135deg, #007bff 0%, #00486b 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+header:hover {
+  background-color: #0056b3;
+}
+.cart-icon {
+  position: absolute;
+  top: 10px; /* Adjust top position as needed */
+  right: 10px; /* Adjust right position as needed */
+  cursor: pointer;
+}
+
+.cart-icon i {
+  font-size: 3em; /* Adjust the font size of the icon as needed */
+  color: #fff; /* Adjust the color of the icon */
+}
+
+#cartItemCount {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 14px;
+}
+main {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button, .category-filters button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
+
+}
+
+button:hover, .category-filters button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#scanner-container {
+  width: 90%;
+  margin: 20px auto;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+.popup-content button {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9e9e9e;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.popup-content input[type="number"] {
+  width: 25%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #007bff; /* Border color */
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.popup-content input[type="number"]:focus {
+  outline: none;
+  border-color: #0056b3; /* Border color on focus */
+}
+
+.popup-content button:hover {
+    background-color: #0056b3;
+}
+
+.popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  
+}
+.popup-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.popup-content th, .popup-content td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.popup-content th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.popup-content tr:last-child td {
+  border-bottom: none;
+}
+
+.popup-content #total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+#checkout-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 100px;
+  cursor: pointer;
+}
+
+#product-title {
+  margin: 20px 0 10px;
+  font-size: 24px;
+}
+
+#product-price {
+  font-size: 20px;
+  color: #333;
+}
+.search-container, .category-filters, #loading-indicator {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #007bff;
+  border-radius: 30px;
+  font-size: 18px;
+  transition: border-color 0.3s ease;
+}
+#searchInput:focus {
+  border-color: #0056b3;
+}
+.search-results, .product-display-area, #loading-indicator {
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.search-results div, .product-display-area .product-detail {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.search-results div:hover, .category-filters button.active {
+  background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 768px) {
+  #scanner-container, .search-container, .popup {
+    width: 95%;
+    max-width: none;
+  }
+
+  button, .category-filters button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .popup-content h2, .popup-content p, .close {
+    font-size: smaller;
+  }
+}
