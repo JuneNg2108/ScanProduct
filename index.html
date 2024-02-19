@@ -118,8 +118,6 @@ function toggleCart() {
     }
 }
 
-// Function to display the cart
-// Function to display the cart
 function displayCart() {
     const cartPopup = document.getElementById('checkout-popup');
     const checkoutItemsContainer = document.getElementById('checkout-items');
@@ -130,16 +128,21 @@ function displayCart() {
         checkoutRow.innerHTML = `
             <td>${item.title}</td>
             <td>${item.quantity}</td>
-            <td>${item.retailPrice}</td>
+            <td>${formatPrice(item.retailPrice)}</td>
         `;
         checkoutItemsContainer.appendChild(checkoutRow);
     });
 
     // Display total cost
     const totalCostElement = document.getElementById('total');
-    totalCostElement.innerHTML = `<strong>Total Cost:</strong> ${calculateTotalCost()} VND`;
+    totalCostElement.innerHTML = `<strong>Total Cost:</strong> ${formatPrice(calculateTotalCost())} VND`;
 
     cartPopup.style.display = 'block'; // Show the cart popup
+}
+
+function formatPrice(price) {
+    // Separate thousands with dots
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' VND';
 }
 
 function closeCheckoutPopup() {
