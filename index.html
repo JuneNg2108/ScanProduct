@@ -36,6 +36,7 @@
         <button onclick="addToCart()">Thêm vào giỏ hàng</button> <!-- Change button text to "Thêm vào giỏ hàng" -->
       </div>
     </div>
+    <div id="loading-indicator" style="display: none;">Loading...</div>
   </main>
 
    <div id="checkout-popup" style="display: none;">
@@ -139,15 +140,3 @@ function displayCart() {
 }
 
 function formatPrice(price) {
-    // Separate thousands with dots
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' VND';
-}
-function closeCheckoutPopup() {
-    const checkoutPopup = document.getElementById('checkout-popup');
-    checkoutPopup.style.display = 'none';
-}
-
-    
-</script>
-</body>
-</html>
