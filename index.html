@@ -137,19 +137,19 @@ function displayCart() {
         const checkoutRow = document.createElement('tr');
         const totalCost = item.quantity * parsePrice(item.Price); // Calculate total cost for the item
         checkoutRow.innerHTML = `
-            <td>${item.title}</td>
-            <td>
-                <input type="text" value="${item.quantity}" onchange="changeQuantity('${item.identifier}', this.value)" data-identifier="${item.identifier}">
-            </td>
-            <td>${formatPrice(item.Price)}</td>
-            <td>
-                <div class="total-price">
-                    <span>${formatPrice(totalCost)}</span>
-                    <span class="currency">₫</span>
-                </div>
-            </td>
-            <td><button onclick="removeItem('${item.identifier}')">Xóa</button></td>
-        `;
+    <td>${item.title}</td>
+    <td>
+        <input type="text" value="${item.quantity}" onchange="changeQuantity('${item.identifier}', this.value)" data-identifier="${item.identifier}">
+    </td>
+    <td>${formatPrice(item.Price)}</td>
+    <td>
+        <div class="total-price">
+            <span>${formatPrice(totalCost)}</span>
+            <span class="currency">₫</span> <!-- Add the currency symbol here -->
+        </div>
+    </td>
+    <td><button onclick="removeItem('${item.identifier}')">Xóa</button></td>
+`;
         checkoutItemsContainer.appendChild(checkoutRow);
     });
 
@@ -197,12 +197,12 @@ function changeQuantity(identifier, newQuantity) {
 
 
 function formatPrice(price, includeCurrencySymbol = true) {
-    // Separate thousands with dots
-    let formattedPrice = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    
+    // Format the price with commas for thousands separators
+    let formattedPrice = price.toLocaleString('en-US');
+
     // Append currency symbol if includeCurrencySymbol is true
     if (includeCurrencySymbol) {
-        formattedPrice += " ";
+        formattedPrice += "";
     }
 
     return formattedPrice;
@@ -221,23 +221,29 @@ function closeCheckoutPopup() {
 </script>
 
 <script>
-  function calculateChange() {
-      const paidAmount = parseFloat(document.getElementById('paidAmount').value);
-      const totalCost = parseFloat(calculateTotalCost());
-      
-      if (isNaN(paidAmount)) {
-          alert('Vui lòng nhập số tiền hợp lệ.');
-          return;
-      }
-  
-      const change = paidAmount - totalCost;
-  
-      if (change < 0) {
-          document.getElementById('change').innerHTML = 'Số tiền trả không đủ để thanh toán.';
-      } else {
-          document.getElementById('change').innerHTML = `Số tiền trả lại: ${formatPrice(change.toFixed(3))} ₫`;
-      }
-  }
+ function calculateChange() {
+    const paidAmountString = document.getElementById('paidAmount').value;
+    const paidAmount = parseFloat(paidAmountString.replace(/\./g, '').replace(/,/g, '')); // Remove dots and commas from the paid amount string
+    const totalCost = parseFloat(parsePrice(calculateTotalCost()));
+
+    if (isNaN(paidAmount)) {
+        alert('Vui lòng nhập số tiền hợp lệ.');
+        return;
+    }
+
+    const change = paidAmount - totalCost;
+
+    if (change < 0) {
+    document.getElementById('change').innerHTML = 'Số tiền trả không đủ để thanh toán.';
+} else {
+    // Format the change with two decimal places
+    const formattedChange = formatPrice(change, false); // Don't include currency symbol
+    document.getElementById('change').innerHTML = `Số tiền trả lại: ${formattedChange} ₫`; // Add the currency symbol here
+}
+
+}
+
+
   </script>
 
 <script>
