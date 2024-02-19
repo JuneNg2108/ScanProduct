@@ -81,11 +81,11 @@
     const productPrice = document.getElementById('product-price').textContent;
     const productInfo = {
         title: productTitle,
-        retailPrice: productPrice
+        Price: productPrice
     };
 
     // Generate a unique identifier based on product title and price
-    const uniqueIdentifier = `${productInfo.title}_${productInfo.retailPrice}`;
+    const uniqueIdentifier = `${productInfo.title}_${productInfo.Price}`;
 
     const existingItem = cartItems.find(item => item.identifier === uniqueIdentifier);
     if (existingItem) {
@@ -104,7 +104,7 @@ function updateCartCount() {
     cartItemCount.textContent = totalItems;
 }
 function calculateTotalCost() {
-    const totalCost = cartItems.reduce((total, item) => total + (item.quantity * parsePrice(item.retailPrice)), 0);
+    const totalCost = cartItems.reduce((total, item) => total + (item.quantity * parsePrice(item.Price)), 0);
     return totalCost.toFixed(3); // Format the total cost to XXX.XXX
 }
 
@@ -126,7 +126,7 @@ function displayCart() {
         checkoutRow.innerHTML = `
             <td>${item.title}</td>
             <td>${item.quantity}</td>
-            <td>${formatPrice(item.retailPrice)}</td>
+            <td>${formatPrice(item.Price)}</td>
         `;
         checkoutItemsContainer.appendChild(checkoutRow);
     });
