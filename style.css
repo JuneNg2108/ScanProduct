@@ -187,7 +187,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   width: 90%; /* Adjust width as needed */
-  max-width: 320px; /* Ensure popup is not too wide */
+  max-width: 280px; /* Ensure popup is not too wide for smaller screens */
 }
 
 /* Checkout items table */
@@ -197,43 +197,39 @@ button:hover {
   margin-bottom: 10px; /* Reduce margin for smaller screens */
 }
 
-#checkout-items {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 10px; /* Reduce margin for smaller screens */
-}
-
 #checkout-items th,
 #checkout-items td {
   border: 1px solid #ddd;
-  padding: 8px; /* Reduce padding for smaller screens */
+  padding: 6px; /* Further reduce padding for smaller screens */
 }
 
 #checkout-items th {
   background-color: #f2f2f2;
   color: #333;
-  font-size: 16px; /* Decrease font size for smaller screens */
+  font-size: 14px; /* Decrease font size for smaller screens */
 }
+
 #checkout-items tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
+/* Payment input */
 .payment-input {
-  width: 130px; /* Reduce width for smaller screens */
-  padding: 8px; /* Reduce padding for smaller screens */
-  font-size: 14px; /* Decrease font size for smaller screens */
+  width: 110px; /* Further reduce width for smaller screens */
+  padding: 6px; /* Further reduce padding for smaller screens */
+  font-size: 12px; /* Decrease font size for smaller screens */
 }
 
 /* Payment button */
 .payment-button {
-  padding: 8px 16px; /* Reduce padding for smaller screens */
-  font-size: 14px; /* Decrease font size for smaller screens */
+  padding: 6px 12px; /* Further reduce padding for smaller screens */
+  font-size: 12px; /* Decrease font size for smaller screens */
 }
 
 /* Change info */
 .change-info {
-  margin-top: 8px; /* Reduce margin for smaller screens */
-  font-size: 16px; /* Decrease font size for smaller screens */
+  margin-top: 6px; /* Further reduce margin for smaller screens */
+  font-size: 14px; /* Decrease font size for smaller screens */
 }
 .close {
   position: absolute;
