@@ -50,24 +50,33 @@
   <div id="checkout-popup" style="display: none;">
     <div class="modal-overlay"></div>
     <div class="popup-content">
-      <span class="close" onclick="closeCheckoutPopup()">&times;</span>
-      <h2>Thanh Toán</h2>
-      <table id="checkout-items">
-        <thead>
-          <tr>
-            <th>Sản Phẩm</th>
-            <th>Số Lượng</th>
-            <th>Giá</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Checkout items will be dynamically added here -->
-        </tbody>
-      </table>
-      <hr>
-      <div id="total"></div>
+        <span class="close" onclick="closeCheckoutPopup()">&times;</span>
+        <h2>Thanh Toán</h2>
+        <table id="checkout-items">
+            <thead>
+                <tr>
+                    <th>Sản Phẩm</th>
+                    <th>Số Lượng</th>
+                    <th>Giá</th>
+                    <th>Tổng Giá</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Checkout items will be dynamically added here -->
+            </tbody>
+        </table>
+        <hr>
+        <div id="total"></div>
+        <div id="payment-container">
+          <label for="paidAmount">Số Tiền Trả:</label>
+          <input type="number" id="paidAmount" oninput="fitInputWidth(this)">
+          <button onclick="calculateChange()">Tính Tiền Thừa</button>
+          <div id="change"></div>
+      </div>
     </div>
-  </div>
+</div>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/quagga"></script>
@@ -96,6 +105,9 @@
         cartItems.push({ ...productInfo, quantity: parseInt(document.getElementById('quantity').value), identifier: uniqueIdentifier });
     }
     updateCartCount(); // Update the cart item count display
+
+    // Reset the quantity input field to 1
+    document.getElementById('quantity').value = '1';
 }
 
 function updateCartCount() {
@@ -123,30 +135,116 @@ function displayCart() {
 
     cartItems.forEach(item => {
         const checkoutRow = document.createElement('tr');
+        const totalCost = item.quantity * parsePrice(item.Price); // Calculate total cost for the item
         checkoutRow.innerHTML = `
             <td>${item.title}</td>
-            <td>${item.quantity}</td>
+            <td>
+                <input type="text" value="${item.quantity}" onchange="changeQuantity('${item.identifier}', this.value)" data-identifier="${item.identifier}">
+            </td>
             <td>${formatPrice(item.Price)}</td>
+            <td>
+                <div class="total-price">
+                    <span>${formatPrice(totalCost)}</span>
+                    <span class="currency">₫</span>
+                </div>
+            </td>
+            <td><button onclick="removeItem('${item.identifier}')">Xóa</button></td>
         `;
         checkoutItemsContainer.appendChild(checkoutRow);
     });
 
-    // Display total cost
+    // Display total cost for all items
     const totalCostElement = document.getElementById('total');
-    totalCostElement.innerHTML = `<strong>Tổng cộng:</strong> ${formatPrice(calculateTotalCost())} `;
+    totalCostElement.innerHTML = `<strong>Tổng cộng:</strong> ${formatPrice(calculateTotalCost())} ₫`;
 
     cartPopup.style.display = 'block'; // Show the cart popup
+
+    // Update cart item count
+    updateCartCount();
 }
 
-function formatPrice(price) {
-    // Separate thousands with dots
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' VND';
+function removeItem(identifier) {
+    // Find the item in the cartItems array
+    const index = cartItems.findIndex(item => item.identifier === identifier);
+    if (index !== -1) {
+        // Remove the item from the array
+        cartItems.splice(index, 1);
+        // Redisplay the cart
+        displayCart();
+    }
 }
+
+function changeQuantity(identifier, newQuantity) {
+    // Find the item in the cartItems array
+    const item = cartItems.find(item => item.identifier === identifier);
+    if (item) {
+        // Update the quantity of the item
+        const previousQuantity = item.quantity; // Store the previous quantity
+        item.quantity = parseInt(newQuantity) || previousQuantity; // Use the new quantity if provided, otherwise use the previous quantity
+
+        // If the input is empty, reset it to the previous quantity
+        if (!newQuantity) {
+            const inputElement = document.querySelector(`input[data-identifier="${identifier}"]`);
+            if (inputElement) {
+                inputElement.value = previousQuantity;
+            }
+        }
+
+        // Redisplay the cart
+        displayCart();
+    }
+}
+
+
+function formatPrice(price, includeCurrencySymbol = true) {
+    // Separate thousands with dots
+    let formattedPrice = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    
+    // Append currency symbol if includeCurrencySymbol is true
+    if (includeCurrencySymbol) {
+        formattedPrice += " ";
+    }
+
+    return formattedPrice;
+}
+
+
 function closeCheckoutPopup() {
     const checkoutPopup = document.getElementById('checkout-popup');
     checkoutPopup.style.display = 'none';
 }
 
 </script>
+
+<script>
+  function calculateChange() {
+      const paidAmount = parseFloat(document.getElementById('paidAmount').value);
+      const totalCost = parseFloat(calculateTotalCost());
+      
+      if (isNaN(paidAmount)) {
+          alert('Vui lòng nhập số tiền hợp lệ.');
+          return;
+      }
+  
+      const change = paidAmount - totalCost;
+  
+      if (change < 0) {
+          document.getElementById('change').innerHTML = 'Số tiền trả không đủ để thanh toán.';
+      } else {
+          document.getElementById('change').innerHTML = `Số tiền trả lại: ${formatPrice(change.toFixed(3))} ₫`;
+      }
+  }
+  </script>
+
+<script>
+  function fitInputWidth(input) {
+      const textLength = input.value.length;
+      const fontSize = window.getComputedStyle(input).getPropertyValue('font-size');
+      const minWidth = (textLength * parseFloat(fontSize)) + 10 + 'px'; // Adding 10px for padding
+      input.style.minWidth = minWidth;
+  }
+  </script>
+  
+    
 </body>
 </html>
