@@ -60,6 +60,15 @@ button {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
+#scanner-container {
+  width: 100%; /* Adjusted width to fit smaller screens */
+  margin: 20px auto;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
 
 button:hover {
   background-color: #0056b3;
