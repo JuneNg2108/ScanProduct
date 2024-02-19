@@ -135,7 +135,7 @@ function displayCart() {
 
     // Display total cost
     const totalCostElement = document.getElementById('total');
-    totalCostElement.innerHTML = `<strong>Total Cost:</strong> ${formatPrice(calculateTotalCost())} VND`;
+    totalCostElement.innerHTML = `<strong>Tổng cộng:</strong> ${formatPrice(calculateTotalCost())} `;
 
     cartPopup.style.display = 'block'; // Show the cart popup
 }
@@ -144,7 +144,6 @@ function formatPrice(price) {
     // Separate thousands with dots
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + ' VND';
 }
-
 function closeCheckoutPopup() {
     const checkoutPopup = document.getElementById('checkout-popup');
     checkoutPopup.style.display = 'none';
