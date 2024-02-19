@@ -11,7 +11,7 @@
   <header>
     <h1>Kiểm Tra Giá Sản Phẩm</h1>
     <div class="cart-icon" onclick="toggleCart()">
-      <i class="fas fa-shopping-basket fa-2x"></i> <!-- Decreased icon size for smaller screens -->
+      <i class="fas fa-shopping-basket fa-2x"></i>
       <span id="cartItemCount">0</span>
     </div>
   </header>
@@ -31,9 +31,9 @@
         <h2 id="product-title"></h2>
         <img id="product-image" alt="">
         <p id="product-price"></p>
-        <label for="quantity">Số Lượng:</label> <!-- Change label to "Số Lượng" -->
+        <label for="quantity">Số Lượng:</label>
         <input type="number" id="quantity" name="quantity" value="1" min="1">
-        <button onclick="addToCart()">Thêm vào giỏ hàng</button> <!-- Change button text to "Thêm vào giỏ hàng" -->
+        <button onclick="addToCart()">Thêm vào giỏ hàng</button>
       </div>
     </div>
     <div id="loading-indicator" style="display: none;">
@@ -41,7 +41,7 @@
     </div>
   </main>
 
-   <div id="checkout-popup" style="display: none;">
+  <div id="checkout-popup" style="display: none;">
     <div class="modal-overlay"></div>
     <div class="popup-content">
       <span class="close" onclick="closeCheckoutPopup()">&times;</span>
@@ -64,8 +64,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/quagga"></script>
-
-
   <script src="BanLe.js"></script>
 
 
@@ -92,8 +90,6 @@
     }
     updateCartCount();
 }
-
-
 
 function updateCartCount() {
     const cartItemCount = document.getElementById('cartItemCount');
@@ -150,7 +146,6 @@ function closeCheckoutPopup() {
     checkoutPopup.style.display = 'none';
 }
 
-    
 </script>
 </body>
 </html>
