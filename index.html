@@ -3,47 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barcode Scanner</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Bán Lẻ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
 </head>
 <body>
   <header>
     <h1>Kiểm Tra Giá Sản Phẩm</h1>
+    <div class="cart-icon" onclick="toggleCart()">
+      <i class="fas fa-shopping-basket fa-3x"></i>
+      <span id="cartItemCount">0</span>
+    </div>
   </header>
 
   <main>
     <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Tên sản phẩm / Mã sản phẩm..." autocomplete="off">
-    <div id="searchResults" class="search-results"></div>
-</div>
-      <!-- Product Display Area -->
-<div id="product-display-area" class="product-display-area" style="display: none;"></div>
-
-<!-- Category Filters (example) -->
-<div id="category-filters" class="category-filters" style="display: none;">
-    <button onclick="filterProducts('All')">All</button>
-    <button onclick="filterProducts('Electronics')">Electronics</button>
-    <button onclick="filterProducts('Books')">Books</button>
-    <!-- Add more categories as needed -->
-</div>
-
-<!-- Loading Indicator -->
-<div id="loading-indicator" class="loading-indicator" style="display: none;">Loading...</div>
+      <input type="text" id="searchInput" placeholder="Tên sản phẩm / Mã sản phẩm..." autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </div>
 
 
     <div id="scanner-container"></div>
-    <button id="scanBtn">Quét Mã</button>
+    <button id="scanBtn">Bắt đầu quét </button>
     <div id="product-info" class="popup" style="display: none;">
+      <div class="modal-overlay"></div>
       <div class="popup-content">
         <span class="close" onclick="closePopup()">&times;</span>
         <h2 id="product-title"></h2>
-        <img id="product-image" src="" alt="Product Image">
-        <p id="product-description"></p>
+        <img id="product-image" alt="">
         <p id="product-price"></p>
-      </div>
+        <label for="quantity">Số Lượng:</label> <!-- Change label to "Số Lượng" -->
+        <input type="number" id="quantity" name="quantity" value="1" min="1">
+        <button onclick="addToCart()">Thêm vào giỏ hàng</button> <!-- Change button text to "Thêm vào giỏ hàng" -->
     </div>
+    </div>
+    <div id="loading-indicator" style="display: none;">Loading...</div>
   </main>
+
+   <div id="checkout-popup" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="popup-content">
+      <span class="close" onclick="closeCheckoutPopup()">&times;</span>
+      <h2>Thanh Toán</h2>
+      <table id="checkout-items">
+        <thead>
+          <tr>
+            <th>Sản Phẩm</th>
+            <th>Số Lượng</th>
+            <th>Giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Checkout items will be dynamically added here -->
+        </tbody>
+      </table>
+      <hr>
+      <div id="total"></div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/quagga"></script>
-  <script src="script.js"></script>
+
+
+  <script src="BanLe.js"></script>
+
+
+  <script> 
+  let cartItems = [];
+  function addToCart() {
+    const productTitle = document.getElementById('product-title').textContent;
+    const productPrice = document.getElementById('product-price').textContent;
+    const productInfo = {
+        title: productTitle,
+        retailPrice: productPrice
+    };
+
+    // Generate a unique identifier based on product title and price
+    const uniqueIdentifier = `${productInfo.title}_${productInfo.retailPrice}`;
+
+    const existingItem = cartItems.find(item => item.identifier === uniqueIdentifier);
+    if (existingItem) {
+        // If item already exists, increment quantity
+        existingItem.quantity += parseInt(document.getElementById('quantity').value);
+    } else {
+        // Add a new item to the cart
+        cartItems.push({ ...productInfo, quantity: parseInt(document.getElementById('quantity').value), identifier: uniqueIdentifier });
+    }
+    updateCartCount();
+}
+
+
+
+function updateCartCount() {
+    const cartItemCount = document.getElementById('cartItemCount');
+    const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    cartItemCount.textContent = totalItems;
+}
+function calculateTotalCost() {
+    const totalCost = cartItems.reduce((total, item) => total + (item.quantity * parsePrice(item.retailPrice)), 0);
+    return totalCost.toFixed(3); // Format the total cost to XXX.XXX
+}
+
+function parsePrice(priceString) {
+    // Remove non-numeric characters and parse as float
+    return parseFloat(priceString.replace(/[^\d.]/g, ''));
+}
+// Function to toggle the cart
+function toggleCart() {
+    const cartPopup = document.getElementById('checkout-popup');
+    if (cartPopup.style.display === 'none' || cartPopup.style.display === '') {
+        displayCart();
+    } else {
+        cartPopup.style.display = 'none';
+    }
+}
+
+// Function to display the cart
+// Function to display the cart
+function displayCart() {
+    const cartPopup = document.getElementById('checkout-popup');
+    const checkoutItemsContainer = document.getElementById('checkout-items');
+    checkoutItemsContainer.innerHTML = ''; // Clear previous items
+
+    cartItems.forEach(item => {
+        const checkoutRow = document.createElement('tr');
+        checkoutRow.innerHTML = `
+            <td>${item.title}</td>
+            <td>${item.quantity}</td>
+            <td>${item.retailPrice}</td>
+        `;
+        checkoutItemsContainer.appendChild(checkoutRow);
+    });
+
+    // Display total cost
+    const totalCostElement = document.getElementById('total');
+    totalCostElement.innerHTML = `<strong>Total Cost:</strong> ${calculateTotalCost()} VND`;
+
+    cartPopup.style.display = 'block'; // Show the cart popup
+}
+
+function closeCheckoutPopup() {
+    const checkoutPopup = document.getElementById('checkout-popup');
+    checkoutPopup.style.display = 'none';
+}
+</script>
 </body>
 </html>
