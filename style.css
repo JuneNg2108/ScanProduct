@@ -199,14 +199,12 @@ button:hover {
 /* Add these styles to your existing style.css file */
 
 #checkout-popup .popup-content {
-  margin: 0 auto; /* This will center the content if width is less than 100% */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Other styles... */
-  width: 60%; /* Adjust width as needed */
-  min-width: 320px; /* Ensure popup is not too narrow */
+  width: 95%; /* Adjust width as needed for smaller screens */
+  max-width: none; /* This ensures the max width is always 95% of the screen width */
+  padding: 10px; /* Reduced padding */
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
+
 
 #checkout-items {
   width: 100%;
@@ -354,8 +352,30 @@ input[type="text"]:focus {
     max-width: 280px; /* Adjusted max-width for smaller screens */
   }
 
-  .popup-content input[type="number"] {
-    width: 50%; 
+  #checkout-items th, #checkout-items td {
+    padding: 8px; /* Reduce padding for smaller screens */
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+  
+  .payment-input, .payment-button {
+    width: auto; /* Allow the input and button to fill the available space */
+    margin: 5px 0; /* Add vertical margin and remove horizontal margin */
+  }
+  
+  .change-info, #total, .popup-content h2 {
+    font-size: 16px; /* Adjust font size for readability on small screens */
+  }
+  
+  /* Adjust close button size and position */
+  .close {
+    font-size: 20px;
+    top: 5px;
+    right: 5px;
+  }
+  
+  /* Ensure the input fields in the checkout items do not overflow */
+  #checkout-items input[type="text"] {
+    width: 40px; /* Adjust width as needed */
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
