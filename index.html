@@ -10,10 +10,6 @@
 <body>
   <header>
     <h1>Kiểm Tra Giá Sản Phẩm</h1>
-    <div class="cart-icon" onclick="toggleCart()">
-      <i class="fas fa-shopping-basket fa-2x"></i>
-      <span id="cartItemCount">0</span>
-    </div>
   </header>
 
   <main>
@@ -21,9 +17,11 @@
       <input type="text" id="searchInput" placeholder="Tên sản phẩm / Mã sản phẩm..." autocomplete="off">
       <div id="searchResults" class="search-results"></div>
     </div>
-
     <div id="scanner-container"></div>
     <button id="scanBtn">Bắt đầu quét</button>
+   
+    
+    
     <div id="product-info" class="popup" style="display: none;">
       <div class="modal-overlay"></div>
       <div class="popup-content">
@@ -36,10 +34,14 @@
         <button onclick="addToCart()">Thêm vào giỏ hàng</button>
       </div>
     </div>
-    <div id="loading-indicator" style="display: none;">
-      <div class="loading-spinner"></div>
-    </div>
   </main>
+
+  <div class="cart-container" onclick="toggleCart()">
+    <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span>
+    <span class="cart-text">Giỏ Hàng</span>
+    <span class="cart-item-count">0</span> <!-- This is where the item count will be displayed -->
+  </div>
+  
 
   <div id="checkout-popup" style="display: none;">
     <div class="modal-overlay"></div>
@@ -63,11 +65,12 @@
     </div>
   </div>
 
+
   <script src="https://cdn.jsdelivr.net/npm/quagga"></script>
   <script src="BanLe.js"></script>
 
 
-  <script> 
+  <script>
   let cartItems = [];
   function addToCart() {
     const productTitle = document.getElementById('product-title').textContent;
@@ -88,7 +91,7 @@
         // Add a new item to the cart
         cartItems.push({ ...productInfo, quantity: parseInt(document.getElementById('quantity').value), identifier: uniqueIdentifier });
     }
-    updateCartCount();
+    updateCartCount(); // Update the cart item count display
 }
 
 function updateCartCount() {
@@ -105,14 +108,8 @@ function parsePrice(priceString) {
     // Remove non-numeric characters and parse as float
     return parseFloat(priceString.replace(/[^\d.]/g, ''));
 }
-// Function to toggle the cart
 function toggleCart() {
-    const cartPopup = document.getElementById('checkout-popup');
-    if (cartPopup.style.display === 'none' || cartPopup.style.display === '') {
-        displayCart();
-    } else {
-        cartPopup.style.display = 'none';
-    }
+  displayCart();
 }
 
 function displayCart() {
