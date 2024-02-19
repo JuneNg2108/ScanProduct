@@ -177,25 +177,25 @@ button:hover {
   font-weight: bold;
   margin-top: 10px;
 }
-
+.popup-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 #checkout-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: auto;
-  max-width: 600px;
-  background: white;
+  max-width: 500px;
+  background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: opacity 0.3s ease;
 }
-
+.popup-content {
+  text-align: center;
+}
 /* Add these styles to your existing style.css file */
 
 #checkout-popup .popup-content {
@@ -209,35 +209,60 @@ button:hover {
 }
 
 #checkout-items {
-  width: 100%; /* Full width of the popup content */
-  border-collapse: collapse; /* Remove space between borders */
-  margin-top: 20px; /* Add some top margin for spacing */
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 
 #checkout-items th, #checkout-items td {
-  border: 1px solid #ddd; /* Light gray border for cells */
-  text-align: left;
-  padding: 12px 16px; /* Increase padding for better spacing */
+  border: 1px solid #ddd;
+  padding: 12px;
 }
 #checkout-items th {
-  background-color: #f9f9f9; /* Light background for headers */
-  color: #333; /* Dark text for contrast */
-  font-size: 18px; /* Increase font size for better readability */
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 18px;
 }
 
 #checkout-items tr:nth-child(even) {
-  background-color: #f2f2f2; /* Zebra striping for rows */
+  background-color: #f9f9f9;
+}
+.payment-input {
+  width: 150px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
 }
 
+.payment-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.payment-button:hover {
+  background-color: #0056b3;
+}
+
+.change-info {
+  margin-top: 10px;
+  font-size: 18px;
+}
 .close {
   position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 100px;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
   cursor: pointer;
 }
-
 #product-title {
   margin: 20px 0 10px;
   font-size: 24px;
