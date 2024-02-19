@@ -172,6 +172,37 @@ button:hover, .category-filters button:hover {
   text-align: center;
   transition: opacity 0.3s ease;
 }
+
+/* Add these styles to your existing style.css file */
+
+#checkout-popup .popup-content {
+  /* Other styles... */
+  width: 60%; /* Adjust width as needed */
+  min-width: 320px; /* Ensure popup is not too narrow */
+}
+
+#checkout-items {
+  width: 100%; /* Full width of the popup content */
+  border-collapse: collapse; /* Remove space between borders */
+}
+
+#checkout-items th, #checkout-items td {
+  border: 1px solid #ddd; /* Light gray border for cells */
+  text-align: left;
+  padding: 8px; /* Padding within cells */
+}
+
+#checkout-items th {
+  background-color: #f9f9f9; /* Light background for headers */
+  color: #333; /* Dark text for contrast */
+}
+
+#checkout-items tr:nth-child(even) {
+  background-color: #f2f2f2; /* Zebra striping for rows */
+}
+
+/* Additional responsive tweaks may be necessary to ensure the layout looks good on all devices. */
+
 .close {
   position: absolute;
   top: 20px;
