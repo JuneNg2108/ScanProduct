@@ -12,22 +12,23 @@ header {
   text-align: center;
   padding: 20px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
   position: relative;
 }
+
 header:hover {
   background-color: #0056b3;
 }
+
 .cart-icon {
   position: absolute;
-  top: 10px; /* Adjust top position as needed */
-  right: 10px; /* Adjust right position as needed */
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
 .cart-icon i {
-  font-size: 3em; /* Adjust the font size of the icon as needed */
-  color: #fff; /* Adjust the color of the icon */
+  font-size: 3em;
+  color: #fff;
 }
 
 #cartItemCount {
@@ -40,6 +41,7 @@ header:hover {
   padding: 5px;
   font-size: 14px;
 }
+
 main {
   padding: 15px;
   display: flex;
@@ -56,9 +58,6 @@ button, .category-filters button {
   font-size: 18px;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  transition: background-color 0.3s ease;
-
 }
 
 button:hover, .category-filters button:hover {
@@ -76,7 +75,7 @@ button:hover, .category-filters button:hover {
   overflow: hidden;
 }
 
-.popup {
+.popup, #checkout-popup {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -91,105 +90,38 @@ button:hover, .category-filters button:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: opacity 0.3s ease;
-}
-.popup-content button {
-    margin-top: 10px;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #9e9e9e;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.popup-content input[type="number"] {
-  width: 25%;
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid #007bff; /* Border color */
-  border-radius: 5px;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
 }
 
-.popup-content input[type="number"]:focus {
-  outline: none;
-  border-color: #0056b3; /* Border color on focus */
-}
-
-.popup-content button:hover {
-    background-color: #0056b3;
-}
-
-.popup-content .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  font-size: 30px;
-  
-}
-.popup-content table {
+.popup-content, #checkout-popup .popup-content {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-.popup-content th, .popup-content td {
+#checkout-items th, #checkout-items td {
+  border: 1px solid #ccc;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.popup-content th {
-  background-color: #f2f2f2;
   text-align: left;
 }
 
-.popup-content tr:last-child td {
-  border-bottom: none;
+#checkout-items thead {
+  background-color: #007bff;
+  color: #ffffff;
 }
 
-.popup-content #total {
-  font-weight: bold;
-  margin-top: 10px;
+#checkout-items tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
 }
-#checkout-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 300px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: opacity 0.3s ease;
-}
+
 .close {
+  cursor: pointer;
   position: absolute;
   top: 20px;
   right: 25px;
-  font-size: 100px;
-  cursor: pointer;
+  font-size: 30px;
 }
 
-#product-title {
-  margin: 20px 0 10px;
-  font-size: 24px;
-}
-
-#product-price {
-  font-size: 20px;
-  color: #333;
-}
-.search-container, .category-filters, #loading-indicator {
+.search-container {
   width: 90%;
   max-width: 500px;
   margin: 20px auto;
@@ -203,14 +135,17 @@ button:hover, .category-filters button:hover {
   font-size: 18px;
   transition: border-color 0.3s ease;
 }
+
 #searchInput:focus {
   border-color: #0056b3;
 }
-.search-results, .product-display-area, #loading-indicator {
+
+.search-results, .product-display-area {
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background-color: #fff;
+  margin-top: 20px;
 }
 
 .search-results div, .product-display-area .product-detail {
@@ -218,48 +153,34 @@ button:hover, .category-filters button:hover {
   cursor: pointer;
 }
 
-.search-results div:hover, .category-filters button.active {
+.search-results div:hover, .product-display-area .product-detail:hover {
   background-color: #f2f2f2;
 }
 
 @media screen and (max-width: 768px) {
-  #scanner-container, .search-container, .popup {
-    width: 95%;
-    max-width: none;
-  }
-
-  button, .category-filters button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-
-  .popup-content h2, .popup-content p, .close {
-    font-size: smaller;
-  }
-}
-/* Add this to your existing CSS */
-@media screen and (max-width: 480px) {
   .cart-icon i {
-    font-size: 1.5em; /* Adjusted icon size for smaller screens */
+    font-size: 1.5em;
   }
 
-  .popup {
+  .popup, #checkout-popup {
     width: 90%;
-    max-width: 280px; /* Adjusted max-width for smaller screens */
+    max-width: 280px;
   }
 
-  .popup-content input[type="number"] {
-    width: 50%; /* Adjusted input width for smaller screens */
+  .popup-content input[type="number"], #checkout-popup .popup-content input[type="number"] {
+    width: 50%;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .cart-icon i {
-    font-size: 2.5em; /* Adjusted icon size for tablet screens */
+    font-size: 2.5em;
   }
 
-  .popup {
+  .popup, #checkout-popup {
     width: 80%;
-    max-width: 350px; /* Adjusted max-width for tablet screens */
+    max-width: 350px;
   }
 }
+
+/* This CSS provides a cohesive and aesthetically pleasing design across the website, including styling for headers, buttons, the cart icon, checkout and search popups, as well as media queries for responsive design adjustments. */
