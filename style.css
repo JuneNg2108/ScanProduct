@@ -186,60 +186,54 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60%; /* Adjust width as needed */
-  min-width: 320px; /* Ensure popup is not too narrow */
+  width: 90%; /* Adjust width as needed */
+  max-width: 320px; /* Ensure popup is not too wide */
+}
+
+/* Checkout items table */
+#checkout-items {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px; /* Reduce margin for smaller screens */
 }
 
 #checkout-items {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduce margin for smaller screens */
 }
 
 #checkout-items th,
 #checkout-items td {
   border: 1px solid #ddd;
-  padding: 12px;
+  padding: 8px; /* Reduce padding for smaller screens */
 }
 
 #checkout-items th {
   background-color: #f2f2f2;
   color: #333;
-  font-size: 18px;
+  font-size: 16px; /* Decrease font size for smaller screens */
 }
-
 #checkout-items tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
 .payment-input {
-  width: 150px;
-  padding: 10px;
-  border: 2px solid #007bff;
-  border-radius: 5px;
-  font-size: 16px;
-  margin-right: 10px;
+  width: 130px; /* Reduce width for smaller screens */
+  padding: 8px; /* Reduce padding for smaller screens */
+  font-size: 14px; /* Decrease font size for smaller screens */
 }
 
 /* Payment button */
 .payment-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 8px 16px; /* Reduce padding for smaller screens */
+  font-size: 14px; /* Decrease font size for smaller screens */
 }
 
-.payment-button:hover {
-  background-color: #0056b3;
-}
-
+/* Change info */
 .change-info {
-  margin-top: 10px;
-  font-size: 18px;
+  margin-top: 8px; /* Reduce margin for smaller screens */
+  font-size: 16px; /* Decrease font size for smaller screens */
 }
 .close {
   position: absolute;
