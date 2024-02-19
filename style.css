@@ -75,7 +75,7 @@ button:hover, .category-filters button:hover {
   overflow: hidden;
 }
 
-.popup, #checkout-popup {
+.popup,  {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -92,35 +92,49 @@ button:hover, .category-filters button:hover {
   text-align: center;
 }
 
-.popup-content, #checkout-popup .popup-content {
+.popup-content, .popup-content {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
+#checkout-popup {
+  background: #ffffff; /* Bright background for clarity */
+  border: 2px solid #007bff; /* Distinct border */
+  border-radius: 15px; /* Softened corners */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* More pronounced shadow */
+  max-width: 500px; /* Adjusted for wider content */
+  padding: 25px; /* Increased padding for more space */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for centering */
+  position: fixed;
+  z-index: 2; /* Ensure it's above other content */
+  display: none; /* Start hidden */
+}
+
 #checkout-items th, #checkout-items td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
+  border: 1px solid #007bff; /* Blue borders for distinction */
+  padding: 12px 15px; /* More space inside cells */
 }
 
 #checkout-items thead {
-  background-color: #007bff;
-  color: #ffffff;
+  background-color: #0056b3; /* Darker header for contrast */
+  color: #ffffff; /* Light text for visibility */
 }
 
 #checkout-items tbody tr:nth-child(odd) {
-  background-color: #f2f2f2;
+  background-color: #e7f1ff; /* Light blue for alternating rows */
 }
 
 .close {
+  color: #007bff; /* Blue close button */
   cursor: pointer;
+  font-size: 30px; /* Larger close button */
   position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 30px;
+  right: 10px; /* Positioning to the right */
+  top: 10px; /* Positioning at the top */
 }
-
 .search-container {
   width: 90%;
   max-width: 500px;
@@ -163,11 +177,17 @@ button:hover, .category-filters button:hover {
   }
 
   .popup, #checkout-popup {
-    width: 90%;
-    max-width: 280px;
+    width: 95%;
+    padding: 15px; /* Adjust padding on smaller screens */
+    max-width: none;
   }
 
-  .popup-content input[type="number"], #checkout-popup .popup-content input[type="number"] {
+  #checkout-items th, #checkout-items td {
+    padding: 8px; /* Smaller padding for smaller screens */
+  }
+}
+
+  .popup-content input[type="number"], .popup-content input[type="number"] {
     width: 50%;
   }
 }
@@ -176,11 +196,7 @@ button:hover, .category-filters button:hover {
   .cart-icon i {
     font-size: 2.5em;
   }
-
-  .popup, #checkout-popup {
-    width: 80%;
-    max-width: 350px;
+    #checkout-popup {
+    max-width: 450px; /* Slightly smaller max-width for tablets */
   }
 }
-
-/* This CSS provides a cohesive and aesthetically pleasing design across the website, including styling for headers, buttons, the cart icon, checkout and search popups, as well as media queries for responsive design adjustments. */
