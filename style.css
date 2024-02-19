@@ -202,7 +202,7 @@ button:hover {
   margin: 0 auto; /* This will center the content if width is less than 100% */
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   /* Other styles... */
   width: 60%; /* Adjust width as needed */
   min-width: 320px; /* Ensure popup is not too narrow */
@@ -211,23 +211,24 @@ button:hover {
 #checkout-items {
   width: 100%; /* Full width of the popup content */
   border-collapse: collapse; /* Remove space between borders */
+  margin-top: 20px; /* Add some top margin for spacing */
 }
+
 
 #checkout-items th, #checkout-items td {
   border: 1px solid #ddd; /* Light gray border for cells */
   text-align: left;
-  padding: 8px; /* Padding within cells */
+  padding: 12px 16px; /* Increase padding for better spacing */
 }
-
 #checkout-items th {
   background-color: #f9f9f9; /* Light background for headers */
   color: #333; /* Dark text for contrast */
+  font-size: 18px; /* Increase font size for better readability */
 }
 
 #checkout-items tr:nth-child(even) {
   background-color: #f2f2f2; /* Zebra striping for rows */
 }
-
 
 .close {
   position: absolute;
@@ -278,6 +279,29 @@ button:hover {
 .search-results div:hover, .category-filters button.active {
   background-color: #f2f2f2;
 }
+/* CSS for quantity change box */
+input[type="text"] {
+  width: 50px; /* Set the width of the input box */
+  padding: 5px; /* Add padding */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Add border radius */
+  text-align: center; /* Center align text */
+}
+
+input[type="text"]:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #007bff; /* Change border color on focus */
+}
+
+.total-price {
+  display: flex; /* Use flexbox to align items */
+  justify-content: flex-end; /* Align items to the end of the container (right side) */
+}
+
+.total-price span.currency {
+  margin-left: 5px; /* Add some spacing between the price and the currency symbol */
+}
+
 
 @media screen and (max-width: 768px) {
   #scanner-container, .search-container, .popup {
