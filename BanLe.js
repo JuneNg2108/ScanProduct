@@ -42,7 +42,7 @@ function startScanner() {
         if (productInfo) {
             showPopup(productInfo);
         } else {
-            alert("No product found!");
+            alert("Không tìm thấy sản phẩm!");
         }
         loadingIndicator.style.display = 'none'; // Hide loading indicator after scanning
     });
