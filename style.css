@@ -19,28 +19,49 @@ header {
 header:hover {
   background-color: #0056b3;
 }
+.cart-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius:20%;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Ensure it's above other content */
+}
+
+.cart-container:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .cart-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+  font-size: 20px;
 }
 
-.cart-icon i {
-  font-size: 2em;
-  color: #fff;
-}
-
-#cartItemCount {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.cart-item-count {
   background-color: red;
   color: white;
   border-radius: 50%;
-  padding: 5px;
-  font-size: 14px;
+  padding: 4px 6px;
+  font-size: 12px;
+  margin-left: 6px;
+  font-weight: bold;
+}
+
+.cart-icon i {
+  font-size: 20px;
+}
+
+.item-count {
+  margin-left: 10px;
 }
 
 main {
