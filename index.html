@@ -69,10 +69,10 @@
         <hr>
         <div id="total"></div>
         <div id="payment-container">
-          <label for="paidAmount">Số Tiền Trả:</label>
-          <input type="number" id="paidAmount" oninput="fitInputWidth(this)">
-          <button onclick="calculateChange()">Tính Tiền Thừa</button>
-          <div id="change"></div>
+          <label for="paidAmount">Số Tiền Trả (₫):</label>
+          <input type="number" id="paidAmount" oninput="fitInputWidth(this)" class="payment-input">
+          <button onclick="calculateChange()" class="payment-button">Tính Tiền Thừa</button>
+          <div id="change" class="change-info"></div>
       </div>
     </div>
 </div>
@@ -117,7 +117,7 @@ function updateCartCount() {
 }
 function calculateTotalCost() {
     const totalCost = cartItems.reduce((total, item) => total + (item.quantity * parsePrice(item.Price)), 0);
-    return totalCost.toFixed(3); // Format the total cost to XXX.XXX
+    return formatPrice(totalCost); // Format the total cost
 }
 
 function parsePrice(priceString) {
@@ -217,6 +217,10 @@ function closeCheckoutPopup() {
 </script>
 
 <script>
+  
+</script>
+
+<script>
   function calculateChange() {
       const paidAmount = parseFloat(document.getElementById('paidAmount').value);
       const totalCost = parseFloat(calculateTotalCost());
@@ -243,6 +247,57 @@ function closeCheckoutPopup() {
       const minWidth = (textLength * parseFloat(fontSize)) + 10 + 'px'; // Adding 10px for padding
       input.style.minWidth = minWidth;
   }
+  </script>
+
+  <script>
+    let activeComponent = null; // Track the active component
+
+// Function to hide all components
+function hideAllComponents() {
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('product-info').style.display = 'none';
+    document.getElementById('checkout-popup').style.display = 'none';
+    activeComponent = null;
+}
+
+// Function to show the search bar
+function showSearchBar() {
+    if (activeComponent !== 'search') {
+        hideAllComponents();
+        document.getElementById('searchResults').style.display = 'block';
+        activeComponent = 'search';
+    } else {
+        hideAllComponents();
+    }
+}
+
+// Function to show the product info
+function showProductInfo() {
+    if (activeComponent !== 'product') {
+        hideAllComponents();
+        document.getElementById('product-info').style.display = 'block';
+        activeComponent = 'product';
+    } else {
+        hideAllComponents();
+    }
+}
+
+// Function to show the checkout box
+function showCheckoutBox() {
+    if (activeComponent !== 'checkout') {
+        hideAllComponents();
+        document.getElementById('checkout-popup').style.display = 'block';
+        activeComponent = 'checkout';
+    } else {
+        hideAllComponents();
+    }
+}
+
+// Setup event listeners for opening components
+document.getElementById('searchInput').addEventListener('click', showSearchBar);
+document.getElementById('scanBtn').addEventListener('click', showProductInfo);
+document.querySelector('.cart-container').addEventListener('click', showCheckoutBox);
+
   </script>
   
     
