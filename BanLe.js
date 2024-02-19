@@ -6,7 +6,7 @@ const loadingIndicator = document.getElementById('loading-indicator');
 async function loadProductData() {
     try {
         loadingIndicator.style.display = 'block'; // Show loading indicator
-        const response = await fetch('ban_le.json');
+        const response = await fetch('product.json'); // Fetch data from product.json
         productData = await response.json();
         loadingIndicator.style.display = 'none'; // Hide loading indicator after data is loaded
     } catch (error) {
@@ -53,11 +53,11 @@ function getProductInfo(barcode) {
     const product = productData.find(product => product.Code.toString() === barcode);
     if (product) {
         // Format the prices with a dot between digits
-        const retailPrice = `${product.Retail.toLocaleString('en-US').replace(/,/g, '.')} VND`;
+        const Price = `${product.Price.toLocaleString('en-US').replace(/,/g, '.')} VND`;
         return {
             id: product.Code, // Add product ID to identify items uniquely
             title: product.Name,
-            retailPrice,
+            Price,
         };
     }
     return null;
@@ -69,7 +69,7 @@ function showPopup(productInfo) {
     const priceElement = document.getElementById('product-price');
 
     titleElement.textContent = productInfo.title;
-    priceElement.innerHTML = `Retail Price: ${productInfo.retailPrice}`;
+    priceElement.innerHTML = ` Giá: ${productInfo.Price}`;
 
     popup.style.display = 'block';
 }
@@ -80,8 +80,6 @@ function closePopup() {
     // Automatically restart the barcode scanner after closing the popup
     startScanner();
 }
-
-
 
 // Setup the search functionality
 function setupSearch() {
@@ -126,4 +124,3 @@ const scanBtn = document.getElementById('scanBtn');
 scanBtn.addEventListener('click', function() {
     startScanner(); // Optionally restart the scanner manually
 });
-
