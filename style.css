@@ -261,6 +261,16 @@ button:hover {
   font-size: 24px;
   cursor: pointer;
 }
+#closeProductInfo {
+  top: 15px; /* Adjust as needed */
+  right: 15px; /* Adjust as needed */
+}
+
+/* Specific style for the Checkout close button */
+#closeCheckoutPopup {
+  top: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+}
 #product-title {
   margin: 20px 0 10px;
   font-size: 24px;
@@ -362,6 +372,16 @@ input[type="text"]:focus {
     right: 80px;
     cursor: pointer;
     font-size: 30px;
+}
+#closeProductInfo {
+  top: 15px; /* Adjust as needed */
+  right: 15px; /* Adjust as needed */
+}
+
+/* Specific style for the Checkout close button */
+#closeCheckoutPopup {
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
 }
   .payment-input, .payment-button {
     width: auto; /* Allow the input and button to fill the available space */
