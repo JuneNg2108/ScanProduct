@@ -373,11 +373,6 @@ input[type="text"]:focus {
     cursor: pointer;
     font-size: 30px;
 }
-#closeProductInfo {
-  top: 15px; /* Adjust as needed */
-  right: 15px; /* Adjust as needed */
-}
-
 /* Specific style for the Checkout close button */
 #closeCheckoutPopup {
   top: 10px; /* Adjust as needed */
