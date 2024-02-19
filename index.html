@@ -36,9 +36,6 @@
         <button onclick="addToCart()">Thêm vào giỏ hàng</button> <!-- Change button text to "Thêm vào giỏ hàng" -->
       </div>
     </div>
-    <div id="loading-indicator" style="display: none;">
-      <div class="loading-spinner"></div>
-    </div>
   </main>
 
    <div id="checkout-popup" style="display: none;">
@@ -150,15 +147,7 @@ function closeCheckoutPopup() {
     checkoutPopup.style.display = 'none';
 }
 
-    // Function to show the loading indicator
-function showLoading() {
-    document.getElementById('loading-indicator').style.display = 'block';
-}
-
-// Function to hide the loading indicator
-function hideLoading() {
-    document.getElementById('loading-indicator').style.display = 'none';
-}
+    
 </script>
 </body>
 </html>
