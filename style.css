@@ -49,6 +49,15 @@ main {
   flex-direction: column;
   align-items: center;
 }
+#scanner-container {
+  width: 100%; /* Adjusted width to fit smaller screens */
+  margin: 20px auto;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
 
 button {
   background-color: #007bff;
@@ -59,15 +68,6 @@ button {
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-}
-#scanner-container {
-  width: 100%; /* Adjusted width to fit smaller screens */
-  margin: 20px auto;
-  aspect-ratio: 1 / 1;
-  position: relative;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  overflow: hidden;
 }
 
 button:hover {
@@ -207,7 +207,6 @@ button:hover {
   background-color: #f2f2f2; /* Zebra striping for rows */
 }
 
-/* Additional responsive tweaks may be necessary to ensure the layout looks good on all devices. */
 
 .close {
   position: absolute;
@@ -228,12 +227,12 @@ button:hover {
 }
 .search-container, .category-filters, #loading-indicator {
   width: 90%;
-  max-width: 500px;
+  max-width: 300px;
   margin: 20px auto;
 }
 
 #searchInput {
-  width: 100%;
+  width: 90%;
   padding: 15px;
   border: 2px solid #007bff;
   border-radius: 30px;
@@ -261,7 +260,7 @@ button:hover {
 
 @media screen and (max-width: 768px) {
   #scanner-container, .search-container, .popup {
-    width: 95%;
+    width: 80%;
     max-width: none;
   }
 
