@@ -52,12 +52,12 @@ function getProductInfo(barcode) {
     // Search for product information by barcode in the loaded JSON data
     const product = productData.find(product => product.Code.toString() === barcode);
     if (product) {
-        // Format the prices with a dot between digits
-        const Price = `${product.Price.toLocaleString('en-US').replace(/,/g, '.')} VND`;
+        // Format the prices with dots for thousands separators and commas for decimal points
+        const formattedPrice = product.Price.toLocaleString('en-US', { style: 'currency', currency: 'VND' }).replace(/\./g, ',');
         return {
             id: product.Code, // Add product ID to identify items uniquely
             title: product.Name,
-            Price,
+            Price: formattedPrice,
         };
     }
     return null;
@@ -69,10 +69,14 @@ function showPopup(productInfo) {
     const priceElement = document.getElementById('product-price');
 
     titleElement.textContent = productInfo.title;
-    priceElement.innerHTML = ` Giá: ${productInfo.Price}`;
+
+    // Check if the price already contains the currency symbol
+    const formattedPrice = productInfo.Price.includes('₫') ? productInfo.Price.replace('₫', '') : productInfo.Price;
+    priceElement.innerHTML = `Giá: ${formattedPrice}<span>₫</span>`;
 
     popup.style.display = 'block';
 }
+
 
 function closePopup() {
     const popup = document.getElementById('product-info');
