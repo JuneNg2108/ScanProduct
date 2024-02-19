@@ -1,17 +1,22 @@
 let productData = []; // Initialize an empty array to hold product data
+// Add a loading indicator
+const loadingIndicator = document.getElementById('loading-indicator');
 
-// Function to load product data from JSON
+// Modify loadProductData function to show loading indicator
 async function loadProductData() {
     try {
-        const response = await fetch('product_data.json'); // Specify the correct path to your JSON file
+        loadingIndicator.style.display = 'block'; // Show loading indicator
+        const response = await fetch('ban_le.json');
         productData = await response.json();
+        loadingIndicator.style.display = 'none'; // Hide loading indicator after data is loaded
     } catch (error) {
+        loadingIndicator.style.display = 'none'; // Hide loading indicator in case of error
         console.error('Failed to load product data:', error);
     }
 }
 
-// Refactor the Quagga.init logic into a reusable function for starting the scanner
 function startScanner() {
+    loadingIndicator.style.display = 'block'; // Show loading indicator
     Quagga.init({
         inputStream: {
             name: "Live",
@@ -24,6 +29,7 @@ function startScanner() {
     }, function(err) {
         if (err) {
             console.error('Failed to initialize Quagga:', err);
+            loadingIndicator.style.display = 'none'; // Hide loading indicator in case of error
             return;
         }
         Quagga.start();
@@ -38,6 +44,7 @@ function startScanner() {
         } else {
             alert("No product found!");
         }
+        loadingIndicator.style.display = 'none'; // Hide loading indicator after scanning
     });
 }
 
@@ -45,12 +52,12 @@ function getProductInfo(barcode) {
     // Search for product information by barcode in the loaded JSON data
     const product = productData.find(product => product.Code.toString() === barcode);
     if (product) {
+        // Format the prices with a dot between digits
+        const retailPrice = `${product.Retail.toLocaleString('en-US').replace(/,/g, '.')} VND`;
         return {
+            id: product.Code, // Add product ID to identify items uniquely
             title: product.Name,
-            description: product.Description || 'No description available.',
-            wholesalePrice: `${product.WholeSale} VND`,
-            retailPrice: `${product.Retail} VND`,
-            image: 'path/to/default_product_image.jpg' // Update this path as necessary
+            retailPrice,
         };
     }
     return null;
@@ -59,14 +66,10 @@ function getProductInfo(barcode) {
 function showPopup(productInfo) {
     const popup = document.getElementById('product-info');
     const titleElement = document.getElementById('product-title');
-    const imageElement = document.getElementById('product-image');
-    const descriptionElement = document.getElementById('product-description');
     const priceElement = document.getElementById('product-price');
 
     titleElement.textContent = productInfo.title;
-    imageElement.src = productInfo.image; // Ensure you have a default or specific product image path
-    descriptionElement.textContent = productInfo.description;
-    priceElement.innerHTML = `Wholesale Price: ${productInfo.wholesalePrice}<br>Retail Price: ${productInfo.retailPrice}`;
+    priceElement.innerHTML = `Retail Price: ${productInfo.retailPrice}`;
 
     popup.style.display = 'block';
 }
@@ -78,38 +81,6 @@ function closePopup() {
     startScanner();
 }
 
-// Function to display product details in a structured layout
-function displayProductDetails(productInfo) {
-    const productDisplayArea = document.getElementById('product-display-area');
-    productDisplayArea.innerHTML = `
-        <div class="product-detail">
-            <img src="${productInfo.image}" alt="${productInfo.title}">
-            <div class="product-info">
-                <h3>${productInfo.title}</h3>
-                <p>${productInfo.description}</p>
-                <p class="product-price">${productInfo.price}</p>
-            </div>
-        </div>
-    `;
-    productDisplayArea.style.display = 'block';
-}
-
-// Function to toggle category filters
-function toggleCategoryFilters() {
-    const filterArea = document.getElementById('category-filters');
-    filterArea.style.display = filterArea.style.display === 'none' ? 'block' : 'none';
-}
-
-// Function for interactive tutorial (simplified example)
-function showTutorial() {
-    alert("Point your camera at a product barcode to scan. Use the search bar to find products by name or code.");
-}
-
-// Function for showing a loading state
-function showLoading(isLoading) {
-    const loadingIndicator = document.getElementById('loading-indicator');
-    loadingIndicator.style.display = isLoading ? 'block' : 'none';
-}
 
 
 // Setup the search functionality
@@ -122,7 +93,7 @@ function setupSearch() {
         const filteredProducts = productData.filter(product =>
             product.Name.toLowerCase().includes(value) || product.Code.toString().includes(value)
         );
-
+    
         searchResults.innerHTML = ''; // Clear previous results
         filteredProducts.forEach(product => {
             const div = document.createElement('div');
@@ -130,20 +101,19 @@ function setupSearch() {
             div.addEventListener('click', () => {
                 searchInput.value = ''; // Clear search input
                 searchResults.style.display = 'none'; // Hide results
-                showPopup(getProductInfo(product.Code.toString())); // Show popup for clicked product
+                const productInfo = getProductInfo(product.Code.toString());
+                if (productInfo) {
+                    showPopup(productInfo);
+                } else {
+                    alert("No product found!");
+                }
             });
             searchResults.appendChild(div);
         });
         searchResults.style.display = filteredProducts.length > 0 ? 'block' : 'none';
+        loadingIndicator.style.display = 'none'; // Hide loading indicator after search
     });
 }
-
-// Adjust scanner container height for smaller screens
-window.addEventListener('resize', function() {
-    const scannerContainer = document.getElementById('scanner-container');
-    const windowHeight = window.innerHeight;
-    scannerContainer.style.height = `${windowHeight * 0.5}px`; // Adjust as needed
-});
 
 // Execute loadProductData on page load, start the scanner and setup search functionality
 document.addEventListener('DOMContentLoaded', async () => {
@@ -156,3 +126,4 @@ const scanBtn = document.getElementById('scanBtn');
 scanBtn.addEventListener('click', function() {
     startScanner(); // Optionally restart the scanner manually
 });
+
