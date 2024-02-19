@@ -237,3 +237,29 @@ button:hover, .category-filters button:hover {
     font-size: smaller;
   }
 }
+/* Add this to your existing CSS */
+@media screen and (max-width: 480px) {
+  .cart-icon i {
+    font-size: 1.5em; /* Adjusted icon size for smaller screens */
+  }
+
+  .popup {
+    width: 90%;
+    max-width: 280px; /* Adjusted max-width for smaller screens */
+  }
+
+  .popup-content input[type="number"] {
+    width: 50%; /* Adjusted input width for smaller screens */
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .cart-icon i {
+    font-size: 2.5em; /* Adjusted icon size for tablet screens */
+  }
+
+  .popup {
+    width: 80%;
+    max-width: 350px; /* Adjusted max-width for tablet screens */
+  }
+}
