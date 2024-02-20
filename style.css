@@ -355,12 +355,13 @@ input[type="text"]:focus {
   }
 
   /* Adjust the close button size and position */
-  .popup-content .close {
-    font-size: 24px; /* Smaller close icon */
-    padding: 10px; /* Larger clickable area */
-    top: 5px; /* Closer to the top edge */
-    right: 5px; /* Closer to the right edge */
+ .popup-content .close {
+    font-size: 20px; /* Smaller close icon */
+    padding: 5px; /* Larger clickable area for better accessibility */
+    top: 10px; /* Adjust top position to make sure it's not cut off */
+    right: 10px; /* Adjust right position to make sure it's within the popup */
   }
+
   #closeCheckoutPopup {
     position: absolute;
     top: 10px; /* Spacing from the top */
@@ -368,24 +369,36 @@ input[type="text"]:focus {
     z-index: 10; /* Ensure it's above other content */
   }
    #checkout-items {
+    font-size: 12px;
     display: block;
     overflow-x: auto;
     white-space: nowrap;
   }
   /* Style adjustments for the checkout table */
   #checkout-items th, #checkout-items td {
-    padding: 8px;
-    font-size: 14px;
-  }
-  /* Input and button adjustments for payment */
-  .payment-input, .payment-button {
-    width: auto; /* Auto width to fit content */
-    margin-bottom: 5px; /* Margin for spacing */
+    padding: 5px; /* Reduce padding to fit content */
+    /* Ensure text wrapping or ellipsis if content is too wide */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  /* Change and total info font size adjustment */
- .change-info, #total {
-    font-size: 16px;
+  /* Adjust input fields, buttons, and total display */
+  .payment-input, .payment-button, #total, .change-info {
+    font-size: 14px; /* Smaller font size for inputs, buttons, and total */
+    padding: 5px; /* Smaller padding for inputs */
+    margin-bottom: 5px; /* Add space between elements */
+  }
+
+  /* Make the payment input and button take full width */
+  .payment-input, .payment-button {
+    width: calc(100% - 10px); /* Full width minus padding */
+    box-sizing: border-box; /* Include padding and border in width */
+  }
+
+  /* Adjust the total price and change info container */
+  .total-price, .change-info {
+    justify-content: space-between; /* Adjust layout to space out content */
   }
 }
 
