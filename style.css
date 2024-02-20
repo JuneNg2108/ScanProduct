@@ -347,58 +347,61 @@ input[type="text"]:focus {
 /* Add this to your existing CSS */
 @media screen and (max-width: 480px) {
   /* Checkout popup overall adjustments */
-   #checkout-popup .popup-content {
-    width: calc(100% - 20px);
-    padding: 10px;
+  #checkout-popup .popup-content {
+    width: 100%; /* Use full width for smaller devices */
+    padding: 5px;
     box-sizing: border-box;
     position: relative;
   }
-
   /* Adjust the close button size and position */
- .popup-content .close {
-    font-size: 20px; /* Smaller close icon */
-    padding: 5px; /* Larger clickable area for better accessibility */
-    top: 10px; /* Adjust top position to make sure it's not cut off */
-    right: 10px; /* Adjust right position to make sure it's within the popup */
+  .popup-content .close {
+    font-size: 20px; /* Smaller close icon for better fit */
+    padding: 5px; /* Increase touch area for better accessibility */
+    top: 5px; /* Adjust top position to prevent cutoff */
+    right: 5px; /* Adjust right position to prevent cutoff */
+    z-index: 10; /* Ensure it's above other content */
   }
-
   #closeCheckoutPopup {
     position: absolute;
     top: 10px; /* Spacing from the top */
     right: 10px; /* Spacing from the right */
     z-index: 10; /* Ensure it's above other content */
   }
-   #checkout-items {
-    font-size: 12px;
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+
   /* Style adjustments for the checkout table */
   #checkout-items th, #checkout-items td {
-    padding: 5px; /* Reduce padding to fit content */
-    /* Ensure text wrapping or ellipsis if content is too wide */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 5px; /* Reduce padding to fit on screen */
+    font-size: 12px; /* Smaller font size for table content */
   }
 
   /* Adjust input fields, buttons, and total display */
   .payment-input, .payment-button, #total, .change-info {
-    font-size: 14px; /* Smaller font size for inputs, buttons, and total */
-    padding: 5px; /* Smaller padding for inputs */
-    margin-bottom: 5px; /* Add space between elements */
+    font-size: 12px; /* Smaller font size for readability */
+    padding: 5px; /* Reduce padding for a compact look */
+    margin-bottom: 5px; /* Space out elements */
   }
 
   /* Make the payment input and button take full width */
   .payment-input, .payment-button {
-    width: calc(100% - 10px); /* Full width minus padding */
-    box-sizing: border-box; /* Include padding and border in width */
+    width: auto; /* Adjust width to fit content */
   }
 
-  /* Adjust the total price and change info container */
+  /* Adjust total price and change info for smaller screens */
   .total-price, .change-info {
-    justify-content: space-between; /* Adjust layout to space out content */
+    justify-content: space-between; /* Space out content */
+    font-size: 14px; /* Readable font size */
+  }
+
+  /* Make sure the cart icon and count do not overlap content */
+  .cart-container {
+    bottom: 10px;
+    right: 10px;
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .cart-icon i, .cart-item-count {
+    font-size: 16px; /* Adjust icon size for better visibility */
   }
 }
 
