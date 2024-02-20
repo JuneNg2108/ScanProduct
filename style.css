@@ -346,48 +346,27 @@ input[type="text"]:focus {
 }
 /* Add this to your existing CSS */
 @media screen and (max-width: 480px) {
-  .cart-icon i {
-    font-size: 1.5em; /* Adjusted icon size for smaller screens */
+  /* Adjust close button position in product info */
+  #closeProductInfo {
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
   }
 
-  .popup {
-    width: 80%;
-    max-width: 280px; /* Adjusted max-width for smaller screens */
+  /* Adjust close button position in checkout box */
+  #closeCheckoutPopup {
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
   }
 
-  #checkout-items th, #checkout-items td {
-    padding: 8px; /* Reduce padding for smaller screens */
-    font-size: 14px; /* Reduce font size for smaller screens */
-  }
+  /* Adjust close button size for better touch accessibility */
   .popup-content .close {
-    position: absolute;
-    top: 30px;
-    right: 80px;
-    cursor: pointer;
-    font-size: 30px;
-}
-#closeProductInfo {
-  top: 0px; /* Adjust as needed */
-  right:0px; /* Adjust as needed */
-}
-
-/* Specific style for the Checkout close button */
-#closeCheckoutPopup {
-  top: 10px; /* Adjust as needed */
-  right: 30px; /* Adjust as needed */
-}
-  .payment-input, .payment-button {
-    width: auto; /* Allow the input and button to fill the available space */
-    margin: 5px 0; /* Add vertical margin and remove horizontal margin */
-  }
-  
-  .change-info, #total, .popup-content h2 {
-    font-size: 16px; /* Adjust font size for readability on small screens */
+    font-size: 24px; /* Decrease font size */
+    padding: 5px; /* Add padding to increase clickable area */
   }
 
-  /* Ensure the input fields in the checkout items do not overflow */
-  #checkout-items input[type="text"] {
-    width: 40px; /* Adjust width as needed */
+  /* Ensure close button is visible */
+  .popup-content .close::after {
+    content: ''; /* Display close symbol */
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
