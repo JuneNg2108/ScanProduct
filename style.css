@@ -347,8 +347,8 @@ input[type="text"]:focus {
 /* Add this to your existing CSS */
 @media screen and (max-width: 480px) {
   /* Checkout popup overall adjustments */
-  #checkout-popup .popup-content {
-    width: 100%; /* Use full width for smaller devices */
+   #checkout-popup .popup-content {
+    width: calc(100% - 20px);
     padding: 10px;
     box-sizing: border-box;
     position: relative;
@@ -361,40 +361,38 @@ input[type="text"]:focus {
     top: 5px; /* Closer to the top edge */
     right: 5px; /* Closer to the right edge */
   }
- #closeCheckoutPopup {
-  position: absolute;
-  top: 1em; /* You can adjust this value to move the close button lower or higher */
-  right: 1em; /* You can adjust this value to move the close button closer or farther from the right edge */
-  z-index: 10; /* This ensures that the close button is above other content */
-}
+  #closeCheckoutPopup {
+    position: absolute;
+    top: 10px; /* Spacing from the top */
+    right: 10px; /* Spacing from the right */
+    z-index: 10; /* Ensure it's above other content */
+  }
+   #checkout-items {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
   /* Style adjustments for the checkout table */
   #checkout-items th, #checkout-items td {
-    padding: 8px; /* Reduce padding */
-    font-size: 14px; /* Smaller font size */
+    padding: 8px;
+    font-size: 14px;
   }
-
   /* Input and button adjustments for payment */
   .payment-input, .payment-button {
-    width: 100%; /* Full width for inputs and buttons */
-    margin-bottom: 5px; /* Add some margin at the bottom */
+    width: auto; /* Auto width to fit content */
+    margin-bottom: 5px; /* Margin for spacing */
   }
 
   /* Change and total info font size adjustment */
-  .change-info, #total {
-    font-size: 16px; /* Slightly larger font for readability */
-  }
-
-  /* Adjust quantity input fields */
-  #checkout-items input[type="text"] {
-    width: 40px; /* Smaller width for quantity inputs */
-    margin-bottom: 5px; /* Space below the inputs */
+ .change-info, #total {
+    font-size: 16px;
   }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   /* Slightly larger screens like tablets */
-  #checkout-popup .popup-content {
-    width: 90%; /* Allow some margin on the sides */
+ #checkout-popup .popup-content {
+    width: calc(100% - 40px); /* Full width with more margin */
     padding: 15px;
   }
 
@@ -402,6 +400,11 @@ input[type="text"]:focus {
   .popup-content .close {
     font-size: 26px; /* Slightly larger for tablet */
     padding: 10px;
+  }
+
+   #closeCheckoutPopup {
+    top: 15px;
+    right: 15px;
   }
 
   /* Adjust table layout for tablet screens */
