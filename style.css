@@ -346,41 +346,53 @@ input[type="text"]:focus {
 }
 /* Add this to your existing CSS */
 @media screen and (max-width: 480px) {
-  /* Adjust close button position in checkout box */
+  /* Checkout popup overall adjustments */
+  #checkout-popup .popup-content {
+    width: 100%; /* Use full width for smaller devices */
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  /* Adjust the close button size and position */
+  .popup-content .close {
+    font-size: 24px; /* Smaller close icon */
+    padding: 10px; /* Larger clickable area */
+    top: 5px; /* Closer to the top edge */
+    right: 5px; /* Closer to the right edge */
+  }
   #closeCheckoutPopup {
-    top: 10px; /* Adjust top position */
-    right: calc(50% - 175px); /* Calculate right position dynamically */
-    z-index: 9999; /* Ensure it's above other content */
+    position: absolute;
+    top: 10px; /* Closer to the top edge */
+    right: 20px; /* Closer to the right edge */
+    z-index: 10; /* Ensure it's above other content */
+    background-color: #fff; /* Add background color if needed */
+    border-radius: 50%; /* Circular button */
+    padding: 5px; /* Clickable area */
   }
-
-  /* Adjust checkout box size and position */
-  #checkout-popup {
-    width: 80%; /* Adjust width as needed */
-    max-width: 350px; /* Maximum width for smaller screens */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center the box */
-    padding: 20px; /* Add padding */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
-  }
-
-  /* Adjust table styles */
-  #checkout-items {
-    width: 100%; /* Ensure table takes full width */
-    max-width: none; /* Remove max-width to allow full width */
-    table-layout: fixed; /* Fixed table layout to prevent overflowing content */
-  }
-
+  /* Style adjustments for the checkout table */
   #checkout-items th, #checkout-items td {
-    padding: 10px; /* Adjust padding as needed */
-    word-wrap: break-word; /* Allow long words to break */
+    padding: 8px; /* Reduce padding */
+    font-size: 14px; /* Smaller font size */
   }
 
-  #checkout-items th {
-    white-space: nowrap; /* Prevent header text from wrapping */
+  /* Input and button adjustments for payment */
+  .payment-input, .payment-button {
+    width: 100%; /* Full width for inputs and buttons */
+    margin-bottom: 5px; /* Add some margin at the bottom */
+  }
+
+  /* Change and total info font size adjustment */
+  .change-info, #total {
+    font-size: 16px; /* Slightly larger font for readability */
+  }
+
+  /* Adjust quantity input fields */
+  #checkout-items input[type="text"] {
+    width: 40px; /* Smaller width for quantity inputs */
+    margin-bottom: 5px; /* Space below the inputs */
   }
 }
-
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   /* Slightly larger screens like tablets */
