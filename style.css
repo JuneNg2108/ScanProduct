@@ -352,12 +352,6 @@ input[type="text"]:focus {
     right: 10px; /* Adjust right position */
   }
 
-  /* Adjust close button position in checkout box */
-  #closeCheckoutPopup {
-    top: 10px; /* Adjust top position */
-    right: 10px; /* Adjust right position */
-  }
-
   /* Adjust close button size for better touch accessibility */
   .popup-content .close {
     font-size: 24px; /* Decrease font size */
@@ -367,6 +361,40 @@ input[type="text"]:focus {
   /* Ensure close button is visible */
   .popup-content .close::after {
     content: ''; /* Display close symbol */
+  }
+
+  /* Adjust close button position in checkout box */
+  #closeCheckoutPopup {
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+    z-index: 9999; /* Ensure it's above other content */
+  }
+
+  /* Adjust checkout box size and position */
+  #checkout-popup {
+    width: 90%; /* Adjust width as needed */
+    max-width: 300px; /* Maximum width for smaller screens */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the box */
+    padding: 20px; /* Add padding */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+  }
+
+  /* Adjust table styles */
+  #checkout-items {
+    width: 100%; /* Ensure table takes full width */
+    max-width: none; /* Remove max-width to allow full width */
+    table-layout: fixed; /* Fixed table layout to prevent overflowing content */
+  }
+
+  #checkout-items th, #checkout-items td {
+    padding: 10px; /* Adjust padding as needed */
+    word-wrap: break-word; /* Allow long words to break */
+  }
+
+  #checkout-items th {
+    white-space: nowrap; /* Prevent header text from wrapping */
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
