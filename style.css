@@ -367,8 +367,8 @@ input[type="text"]:focus {
     font-size: 30px;
 }
 #closeProductInfo {
-  top: -400px; /* Adjust as needed */
-  right:-800px; /* Adjust as needed */
+  top: 0px; /* Adjust as needed */
+  right:0px; /* Adjust as needed */
 }
 
 /* Specific style for the Checkout close button */
