@@ -374,7 +374,7 @@ input[type="text"]:focus {
 /* Specific style for the Checkout close button */
 #closeCheckoutPopup {
   top: 10px; /* Adjust as needed */
-  right: 10px; /* Adjust as needed */
+  right: 30px; /* Adjust as needed */
 }
   .payment-input, .payment-button {
     width: auto; /* Allow the input and button to fill the available space */
