@@ -360,7 +360,10 @@ input[type="text"]:focus {
     top: 5px; /* Closer to the top edge */
     right: 5px; /* Closer to the right edge */
   }
-
+  #closeProductInfo {
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+  }
   /* Style adjustments for the checkout table */
   #checkout-items th, #checkout-items td {
     padding: 8px; /* Reduce padding */
