@@ -351,6 +351,7 @@ input[type="text"]:focus {
     width: 100%; /* Use full width for smaller devices */
     padding: 10px;
     box-sizing: border-box;
+    position: relative; 
   }
 
   /* Adjust the close button size and position */
@@ -362,8 +363,8 @@ input[type="text"]:focus {
   }
    #closeCheckoutPopup {
     position: absolute;
-    top: 5px; /* Closer to the top edge */
-    right: 5px; /* Closer to the right edge */
+    top: 10px; /* Closer to the top edge */
+    right: 10px; /* Closer to the right edge */
     z-index: 10; /* Ensure it's above other content */
     background-color: #fff; /* Add background color if needed */
     border-radius: 50%; /* Circular button */
