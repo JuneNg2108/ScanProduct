@@ -210,8 +210,9 @@ button:hover {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  max-height: 400px; /* Adjust to the height you want for showing at most 4 items */
+  overflow-y: auto; /* This will allow the table to scroll vertically */
 }
-
 
 #checkout-items th, #checkout-items td {
   border: 1px solid #ddd;
@@ -362,7 +363,7 @@ input[type="text"]:focus {
     z-index: 10; /* Ensure it's above other content */
   }
   #checkout-items {
-  max-height: 400px; /* Adjust to the height you want for showing at most 4 items */
+  max-height: 200px; /* Adjust to the height you want for showing at most 4 items */
   overflow-y: auto; /* This will allow the table to scroll vertically */
 }
 
