@@ -372,8 +372,8 @@ input[type="text"]:focus {
 
   /* Adjust checkout box size and position */
   #checkout-popup {
-    width: 90%; /* Adjust width as needed */
-    max-width: 300px; /* Maximum width for smaller screens */
+    width: 80%; /* Adjust width as needed */
+    max-width: 250px; /* Maximum width for smaller screens */
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Center the box */
