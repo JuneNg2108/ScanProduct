@@ -360,9 +360,14 @@ input[type="text"]:focus {
     top: 5px; /* Closer to the top edge */
     right: 5px; /* Closer to the right edge */
   }
-  #closeCheckoutPopup {
-    top: 10px; /* Adjust top position */
-    right: 0px; /* Adjust right position */
+   #closeCheckoutPopup {
+    position: absolute;
+    top: 5px; /* Closer to the top edge */
+    right: 5px; /* Closer to the right edge */
+    z-index: 10; /* Ensure it's above other content */
+    background-color: #fff; /* Add background color if needed */
+    border-radius: 50%; /* Circular button */
+    padding: 5px; /* Clickable area */
   }
   /* Style adjustments for the checkout table */
   #checkout-items th, #checkout-items td {
