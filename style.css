@@ -362,7 +362,7 @@ input[type="text"]:focus {
   }
   #closeCheckoutPopup {
     top: 20px; /* Adjust top position */
-    right: 40px; /* Adjust right position */
+    right: 20px; /* Adjust right position */
   }
   /* Style adjustments for the checkout table */
   #checkout-items th, #checkout-items td {
