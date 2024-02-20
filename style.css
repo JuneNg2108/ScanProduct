@@ -254,18 +254,11 @@ button:hover {
   margin-top: 10px;
   font-size: 18px;
 }
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
+
 #closeProductInfo {
   top: 15px; /* Adjust as needed */
   right: 15px; /* Adjust as needed */
 }
-
 /* Specific style for the Checkout close button */
 #closeCheckoutPopup {
   top: 20px; /* Adjust as needed */
