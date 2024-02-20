@@ -95,6 +95,22 @@ button:hover {
   background-color: #0056b3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+#checkout-items tbody {
+  display: block;
+  max-height: 400px; /* Adjust this value to show only 4 rows at a time */
+  overflow-y: auto;
+}
+
+#checkout-items thead, 
+#checkout-items tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* This will keep your columns in line */
+}
+
+#checkout-items thead {
+  width: calc( 100% - 1em ) /* scrollbar is average 1em/16px width, adjust as needed */
+}
 
 .popup {
   position: fixed;
@@ -362,9 +378,21 @@ input[type="text"]:focus {
     right: 5px; /* Adjust right position to prevent cutoff */
     z-index: 10; /* Ensure it's above other content */
   }
-  #checkout-items {
-  max-height: 200px; /* Adjust to the height you want for showing at most 4 items */
-  overflow-y: auto; /* This will allow the table to scroll vertically */
+  #checkout-items tbody {
+  display: block;
+  max-height: 200px; /* Adjust this value to show only 4 rows at a time */
+  overflow-y: auto;
+}
+
+#checkout-items thead, 
+#checkout-items tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* This will keep your columns in line */
+}
+
+#checkout-items thead {
+  width: calc( 100% - 1em ) /* scrollbar is average 1em/16px width, adjust as needed */
 }
 
   #closeCheckoutPopup {
