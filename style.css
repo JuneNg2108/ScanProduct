@@ -107,9 +107,15 @@ button:hover {
   width: 100%;
   table-layout: fixed; /* This will keep your columns in line */
 }
-
+#checkout-items th, 
+#checkout-items td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
 #checkout-items thead {
-  width: calc( 100% - 1em ) /* scrollbar is average 1em/16px width, adjust as needed */
+  display: table;
+  width: 100%;
+  background-color: #f2f2f2;
 }
 
 .popup {
@@ -228,6 +234,9 @@ button:hover {
   margin-bottom: 20px;
   max-height: 400px; /* Adjust to the height you want for showing at most 4 items */
   overflow-y: auto; /* This will allow the table to scroll vertically */
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 #checkout-items th, #checkout-items td {
@@ -378,22 +387,27 @@ input[type="text"]:focus {
     right: 5px; /* Adjust right position to prevent cutoff */
     z-index: 10; /* Ensure it's above other content */
   }
-  #checkout-items tbody {
-  display: block;
-  max-height: 200px; /* Adjust this value to show only 4 rows at a time */
-  overflow-y: auto;
+   #checkout-items tbody {
+    max-height: 150px; /* Smaller max-height for mobile devices */
+  }
+#checkout-items th, 
+#checkout-items td {
+    /* Smaller padding and font size for mobile devices */
+    padding: 8px;
+    font-size: 14px;
+  }
+ #checkout-items thead, 
+  #checkout-items tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  #checkout-items thead {
+    width: calc(100% - 17px); /* Adjust width based on scrollbar width */
+  }
 }
 
-#checkout-items thead, 
-#checkout-items tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed; /* This will keep your columns in line */
-}
-
-#checkout-items thead {
-  width: calc( 100% - 1em ) /* scrollbar is average 1em/16px width, adjust as needed */
-}
 
   #closeCheckoutPopup {
     position: absolute;
