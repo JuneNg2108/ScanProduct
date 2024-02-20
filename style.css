@@ -402,38 +402,34 @@ input[type="text"]:focus {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  /* Slightly larger screens like tablets */
- #checkout-popup .popup-content {
-    width: calc(100% - 40px); /* Full width with more margin */
-    padding: 15px;
-  }
-
-  /* Adjust close button size for better touch accessibility */
+media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Similar adjustments as above but for tablet sizes */
   .popup-content .close {
-    font-size: 26px; /* Slightly larger for tablet */
-    padding: 10px;
-  }
-
-   #closeCheckoutPopup {
+    font-size: 22px;
+    padding: 5px;
     top: 15px;
     right: 15px;
   }
 
-  /* Adjust table layout for tablet screens */
+  #checkout-items {
+    font-size: 14px;
+  }
+
   #checkout-items th, #checkout-items td {
-    padding: 10px;
+    padding: 6px;
+  }
+
+  .payment-input, .payment-button, #total, .change-info {
     font-size: 16px;
+    padding: 6px;
+    margin-bottom: 6px;
   }
 
-  /* Adjust the payment input and button size for tablets */
   .payment-input, .payment-button {
-    width: 100%; /* Full width */
-    margin-bottom: 10px;
+    width: calc(100% - 12px);
   }
 
-  /* Font size adjustments for tablet screens */
-  .change-info, #total {
-    font-size: 18px;
+  .total-price, .change-info {
+    justify-content: space-between;
   }
 }
