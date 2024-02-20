@@ -22,10 +22,10 @@
    
     
     
-    <div id="product-info" class="popup" style="display: none;">
+    <div id="product-info" class="popup" >
       <div class="modal-overlay"></div>
       <div class="popup-content">
-        <span class="close" onclick="closePopup()">&times;</span>
+        <span class="close" id="closeProductInfo" onclick="closeProductInfo()">&times;</span>
         <h2 id="product-title"></h2>
         <img id="product-image" alt="">
         <p id="product-price"></p>
@@ -50,8 +50,8 @@
   <div id="checkout-popup" style="display: none;">
     <div class="modal-overlay"></div>
     <div class="popup-content">
-        <span class="close" onclick="closeCheckoutPopup()">&times;</span>
-        <h2>Thanh Toán</h2>
+      <span class="close" id="closeCheckoutPopup" onclick="closeCheckoutPopup()">&times;</span>
+      <h2>Thanh Toán</h2>
         <table id="checkout-items">
             <thead>
                 <tr>
@@ -209,10 +209,16 @@ function formatPrice(price, includeCurrencySymbol = true) {
 }
 
 
-function closeCheckoutPopup() {
-    const checkoutPopup = document.getElementById('checkout-popup');
-    checkoutPopup.style.display = 'none';
+// Function to close Product Info Popup
+function closeProductInfo() {
+  document.getElementById('product-info').style.display = 'none';
 }
+
+// Function to close Checkout Popup
+function closeCheckoutPopup() {
+  document.getElementById('checkout-popup').style.display = 'none';
+}
+
 
 </script>
 
