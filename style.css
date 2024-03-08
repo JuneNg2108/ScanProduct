@@ -372,86 +372,47 @@ input[type="text"]:focus {
 }
 /* Add this to your existing CSS */
 @media screen and (max-width: 480px) {
-  /* Checkout popup overall adjustments */
-  #checkout-popup .popup-content {
-    width: 100%; /* Use full width for smaller devices */
-    padding: 5px;
-    box-sizing: border-box;
-    position: relative;
-  }
-  /* Adjust the close button size and position */
-  .popup-content .close {
-    font-size: 20px; /* Smaller close icon for better fit */
-    padding: 5px; /* Increase touch area for better accessibility */
-    top: 5px; /* Adjust top position to prevent cutoff */
-    right: 5px; /* Adjust right position to prevent cutoff */
-    z-index: 10; /* Ensure it's above other content */
-  }
-   #checkout-items tbody {
-    max-height: 150px; /* Smaller max-height for mobile devices */
-  }
-#checkout-items th, 
-#checkout-items td {
-    /* Smaller padding and font size for mobile devices */
-    padding: 8px;
-    font-size: 14px;
-  }
- #checkout-items thead, 
-  #checkout-items tbody tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  #checkout-items thead {
-    width: calc(100% - 17px); /* Adjust width based on scrollbar width */
-  }
+  /* Adjustments for smaller screens */
+body {
+  font-size: 14px;
 }
 
-
-  #closeCheckoutPopup {
-    position: absolute;
-    top: 10px; /* Spacing from the top */
-    right: 10px; /* Spacing from the right */
-    z-index: 10; /* Ensure it's above other content */
-  }
-
-  /* Style adjustments for the checkout table */
-  #checkout-items th, #checkout-items td {
-    padding: 5px; /* Reduce padding to fit on screen */
-    font-size: 12px; /* Smaller font size for table content */
-  }
-
-  /* Adjust input fields, buttons, and total display */
-  .payment-input, .payment-button, #total, .change-info {
-    font-size: 12px; /* Smaller font size for readability */
-    padding: 5px; /* Reduce padding for a compact look */
-    margin-bottom: 5px; /* Space out elements */
-  }
-
-  /* Make the payment input and button take full width */
-  .payment-input, .payment-button {
-    width: auto; /* Adjust width to fit content */
-  }
-
-  /* Adjust total price and change info for smaller screens */
-  .total-price, .change-info {
-    justify-content: space-between; /* Space out content */
-    font-size: 14px; /* Readable font size */
-  }
-
-  /* Make sure the cart icon and count do not overlap content */
-  .cart-container {
-    bottom: 10px;
-    right: 10px;
-    padding: 5px;
-    font-size: 12px;
-  }
-
-  .cart-icon i, .cart-item-count {
-    font-size: 16px; /* Adjust icon size for better visibility */
-  }
+header {
+  padding: 15px 0;
 }
+
+.cart-container {
+  font-size: 14px;
+  padding: 8px;
+}
+
+.cart-icon i {
+  font-size: 18px;
+}
+
+.popup-content .close {
+  font-size: 18px;
+  padding: 5px;
+}
+
+#checkout-items th, #checkout-items td {
+  padding: 8px;
+}
+
+.payment-input, .payment-button {
+  width: calc(100% - 12px);
+}
+
+.total-price, .change-info {
+  font-size: 14px;
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+.cart-icon i, .cart-item-count {
+  font-size: 16px;
+}
+
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   /* Similar adjustments as above but for tablet sizes */
